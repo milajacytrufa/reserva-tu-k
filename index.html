@@ -334,6 +334,7 @@ input{
 <div class="app">
 
 <header>
+
 <img
 class="logo"
 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDYiIGZpbGw9IiNiOGU1M2YiLz4KPHBhdGggZD0iTTcgMzVjMTggMiAzMSAxNCAzNiAzMSA0IDEzIDMgMjMtMSAzMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOTMgNjVjLTE4LTItMzEtMTQtMzYtMzEtNC0xMy0zLTIzIDEtMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+"
@@ -343,6 +344,7 @@ alt="Pelota de tenis">
 <div class="brand">Reserva Tu K</div>
 <div class="sub">Reserva de cancha</div>
 </div>
+
 </header>
 
 <main>
@@ -354,9 +356,13 @@ alt="Pelota de tenis">
 <div class="label">1. Selecciona la fecha</div>
 
 <div class="calendar-head">
+
 <button class="arrow" onclick="moveMonth(-1)">‹</button>
+
 <div id="month" class="month"></div>
+
 <button class="arrow" onclick="moveMonth(1)">›</button>
+
 </div>
 
 <div class="week">
@@ -1025,29 +1031,35 @@ document
 
 function returnHome(){
 
+/* Reiniciar completamente la reserva */
+
 selectedDate="2026-09-13";
 user="socio";
 selectedTime=null;
 selectedCourt=null;
 view=new Date(2026,8,13);
 
-document
-.getElementById("guestName")
-.value="";
+/* Limpiar datos del externo */
+
+document.getElementById("guestName").value="";
+document.getElementById("guestPhone").value="";
+
+/* Mostrar nuevamente todas las secciones */
 
 document
-.getElementById("guestPhone")
-.value="";
+.querySelectorAll("main > section")
+.forEach(function(x){
+x.classList.remove("hidden");
+});
+
+/* Ocultar pantalla de confirmación */
 
 document
 .getElementById("success")
 .classList
 .add("hidden");
 
-document
-.querySelector(".bottom")
-.style
-.display="block";
+/* Restaurar Socio */
 
 document
 .getElementById("member")
@@ -1059,8 +1071,19 @@ document
 .classList
 .remove("active");
 
+/* Mostrar barra inferior */
+
+document
+.querySelector(".bottom")
+.style
+.display="block";
+
+/* Redibujar todo */
+
 renderCalendar();
 renderAll();
+
+/* Ir al verdadero inicio */
 
 window.scrollTo({
 top:0,
