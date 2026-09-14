@@ -5,196 +5,1085 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#263b7a">
 <title>Reserva Tu K</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f6f5fb;color:#292929;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-.app{max-width:760px;margin:auto;min-height:100vh}
-header{height:78px;background:#fff;border-bottom:1px solid #e4e4e8;display:flex;align-items:center;padding:10px 18px;gap:12px}
-.logo{width:50px;height:50px} .brand{font-size:21px;font-weight:850;color:#263b7a} .sub{font-size:12px;color:#777}
-main{padding:18px 16px 110px}
-h1{font-size:25px;color:#263b7a;margin:0 0 18px}
-.card{background:#fff;border:1px solid #e1e1e7;border-radius:14px;padding:16px;margin-bottom:15px}
-.label{font-size:18px;font-weight:800;margin-bottom:12px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.month{font-size:18px;font-weight:850;color:#263b7a}
-.arrow{width:38px;height:35px;border:0;border-radius:8px;background:#eef0f5;color:#263b7a;font-size:22px}
-.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-.week{font-size:10px;color:#777;font-weight:800;text-align:center;margin-bottom:5px}
-.day{height:43px;border:1px solid transparent;background:#fff;border-radius:9px;font-size:14px;cursor:pointer}
-.day:hover{border-color:#b8d96b} .day.selected{background:#263b7a;color:#fff;font-weight:800}
-.user-buttons{display:flex;gap:9px}
-.user-buttons button{flex:1;border:1px solid #ddd;background:#fff;border-radius:9px;padding:12px;font-weight:800;color:#263b7a}
-.user-buttons button.active{background:#263b7a;color:#fff;border-color:#263b7a}
-.times{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.time{border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;border-radius:9px;padding:13px 5px;font-weight:850;cursor:pointer}
-.time.selected{background:#b8e53f;border-color:#b8e53f;outline:3px solid #dfeebc}
-.time small{display:block;font-size:10px;margin-top:4px}
-.courts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.court{border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;border-radius:9px;padding:14px 7px;font-weight:850;cursor:pointer}
-.court.selected{background:#b8e53f;border-color:#b8e53f;outline:3px solid #dfeebc}
-.busy{background:#eeeef1;color:#999;border-color:#e2e2e5;cursor:not-allowed}
-.summary div{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:9px 0;font-size:14px}
-.summary div:last-child{border-bottom:0} .summary b{color:#263b7a}
-input{width:100%;padding:12px;border:1px solid #d5d7dc;border-radius:9px;font-size:16px;margin:4px 0 11px}
-.confirm{width:100%;border:0;border-radius:25px;padding:14px;background:#263b7a;color:#fff;font-size:17px;font-weight:850}
-.confirm:disabled{background:#b8d779}
-.success{text-align:center;padding:25px 10px}
-.check{margin:auto;width:58px;height:58px;border-radius:50%;background:#b8e53f;display:grid;place-items:center;font-size:30px;font-weight:900}
-.success h2{color:#263b7a} .success p{color:#666}
-.hidden{display:none}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;padding:11px 16px}
-.bottom button{width:100%;max-width:728px;display:block;margin:auto;border:0;border-radius:27px;padding:14px;background:#b8d779;color:#fff;font-size:18px;font-weight:850}
-.bottom button.ready{background:#263b7a}
-.note{font-size:12px;color:#777;margin-top:8px}
-@media(max-width:500px){.times{grid-template-columns:repeat(2,1fr)}}
+
+body{
+  margin:0;
+  background:#f6f5fb;
+  color:#292929;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
+}
+
+.app{
+  max-width:760px;
+  margin:auto;
+  min-height:100vh
+}
+
+header{
+  height:78px;
+  background:#fff;
+  border-bottom:1px solid #e4e4e8;
+  display:flex;
+  align-items:center;
+  padding:10px 18px;
+  gap:12px
+}
+
+.logo{
+  width:50px;
+  height:50px
+}
+
+.brand{
+  font-size:21px;
+  font-weight:850;
+  color:#263b7a
+}
+
+.sub{
+  font-size:12px;
+  color:#777
+}
+
+main{
+  padding:18px 16px 110px
+}
+
+h1{
+  font-size:25px;
+  color:#263b7a;
+  margin:0 0 18px
+}
+
+.card{
+  background:#fff;
+  border:1px solid #e1e1e7;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:15px
+}
+
+.label{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:12px
+}
+
+.calendar-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px
+}
+
+.month{
+  font-size:18px;
+  font-weight:850;
+  color:#263b7a
+}
+
+.arrow{
+  width:38px;
+  height:35px;
+  border:0;
+  border-radius:8px;
+  background:#eef0f5;
+  color:#263b7a;
+  font-size:22px
+}
+
+.week,.calendar{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px
+}
+
+.week{
+  font-size:10px;
+  color:#777;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:5px
+}
+
+.day{
+  height:43px;
+  border:1px solid transparent;
+  background:#fff;
+  border-radius:9px;
+  font-size:14px;
+  cursor:pointer
+}
+
+.day:hover{
+  border-color:#b8d96b
+}
+
+.day.selected{
+  background:#263b7a;
+  color:#fff;
+  font-weight:800
+}
+
+.user-buttons{
+  display:flex;
+  gap:9px
+}
+
+.user-buttons button{
+  flex:1;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:9px;
+  padding:12px;
+  font-weight:800;
+  color:#263b7a
+}
+
+.user-buttons button.active{
+  background:#263b7a;
+  color:#fff;
+  border-color:#263b7a
+}
+
+.times{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px
+}
+
+.time{
+  border:1px solid #cbe49a;
+  background:#f0f9dc;
+  color:#3c5d0b;
+  border-radius:9px;
+  padding:13px 5px;
+  font-weight:850;
+  cursor:pointer
+}
+
+.time.selected{
+  background:#b8e53f;
+  border-color:#b8e53f;
+  outline:3px solid #dfeebc
+}
+
+.time small{
+  display:block;
+  font-size:10px;
+  margin-top:4px
+}
+
+.courts{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px
+}
+
+.court{
+  border:1px solid #cbe49a;
+  background:#f0f9dc;
+  color:#3c5d0b;
+  border-radius:9px;
+  padding:14px 7px;
+  font-weight:850;
+  cursor:pointer
+}
+
+.court.selected{
+  background:#b8e53f;
+  border-color:#b8e53f;
+  outline:3px solid #dfeebc
+}
+
+.busy{
+  background:#eeeef1;
+  color:#999;
+  border-color:#e2e2e5;
+  cursor:not-allowed
+}
+
+.summary div{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+  padding:9px 0;
+  font-size:14px
+}
+
+.summary div:last-child{
+  border-bottom:0
+}
+
+.summary b{
+  color:#263b7a
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border:1px solid #d5d7dc;
+  border-radius:9px;
+  font-size:16px;
+  margin:4px 0 11px
+}
+
+.confirm{
+  width:100%;
+  border:0;
+  border-radius:25px;
+  padding:14px;
+  background:#263b7a;
+  color:#fff;
+  font-size:17px;
+  font-weight:850
+}
+
+.confirm:disabled{
+  background:#b8d779
+}
+
+.success{
+  text-align:center;
+  padding:25px 10px
+}
+
+.check{
+  margin:auto;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#b8e53f;
+  display:grid;
+  place-items:center;
+  font-size:30px;
+  font-weight:900
+}
+
+.success h2{
+  color:#263b7a
+}
+
+.success p{
+  color:#666
+}
+
+.home-btn{
+  width:100%;
+  border:0;
+  border-radius:25px;
+  padding:14px;
+  background:#263b7a;
+  color:#fff;
+  font-size:17px;
+  font-weight:850;
+  margin-top:12px
+}
+
+.hidden{
+  display:none
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+  border-top:1px solid #ddd;
+  padding:11px 16px
+}
+
+.bottom button{
+  width:100%;
+  max-width:728px;
+  display:block;
+  margin:auto;
+  border:0;
+  border-radius:27px;
+  padding:14px;
+  background:#b8d779;
+  color:#fff;
+  font-size:18px;
+  font-weight:850
+}
+
+.bottom button.ready{
+  background:#263b7a
+}
+
+.note{
+  font-size:12px;
+  color:#777;
+  margin-top:8px
+}
+
+@media(max-width:500px){
+  .times{
+    grid-template-columns:repeat(2,1fr)
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
+
 <header>
-<img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDYiIGZpbGw9IiNiOGU1M2YiLz4KPHBhdGggZD0iTTcgMzVjMTggMiAzMSAxNCAzNiAzMSA0IDEzIDMgMjMtMSAzMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOTMgNjVjLTE4LTItMzEtMTQtMzYtMzEtNC0xMy0zLTIzIDEtMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+" alt="Pelota de tenis">
-<div><div class="brand">Reserva Tu K</div><div class="sub">Reserva de cancha</div></div>
+<img
+class="logo"
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDYiIGZpbGw9IiNiOGU1M2YiLz4KPHBhdGggZD0iTTcgMzVjMTggMiAzMSAxNCAzNiAzMSA0IDEzIDMgMjMtMSAzMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOTMgNjVjLTE4LTItMzEtMTQtMzYtMzEtNC0xMy0zLTIzIDEtMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+"
+alt="Pelota de tenis">
+
+<div>
+<div class="brand">Reserva Tu K</div>
+<div class="sub">Reserva de cancha</div>
+</div>
 </header>
 
 <main>
+
 <h1>Reserva de Cancha</h1>
 
 <section id="dateCard" class="card">
+
 <div class="label">1. Selecciona la fecha</div>
+
 <div class="calendar-head">
 <button class="arrow" onclick="moveMonth(-1)">‹</button>
 <div id="month" class="month"></div>
 <button class="arrow" onclick="moveMonth(1)">›</button>
 </div>
-<div class="week"><span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span><span>VIE</span><span>SÁB</span><span>DOM</span></div>
+
+<div class="week">
+<span>LUN</span>
+<span>MAR</span>
+<span>MIÉ</span>
+<span>JUE</span>
+<span>VIE</span>
+<span>SÁB</span>
+<span>DOM</span>
+</div>
+
 <div id="calendar" class="calendar"></div>
+
 </section>
+
 
 <section id="userCard" class="card hidden">
+
 <div class="label">2. ¿Quién reserva?</div>
+
 <div class="user-buttons">
-<button id="member" class="active" onclick="chooseUser('socio')">Socio</button>
-<button id="guest" onclick="chooseUser('externo')">Externo</button>
+
+<button
+id="member"
+class="active"
+onclick="chooseUser('socio')">
+Socio
+</button>
+
+<button
+id="guest"
+onclick="chooseUser('externo')">
+Externo
+</button>
+
 </div>
-<div class="note">Los horarios pueden ser diferentes para socios y externos.</div>
+
+<div class="note">
+Los horarios pueden ser diferentes para socios y externos.
+</div>
+
 </section>
+
 
 <section id="timeCard" class="card hidden">
+
 <div class="label">3. Selecciona una hora</div>
+
 <div id="times" class="times"></div>
+
 </section>
+
 
 <section id="courtCard" class="card hidden">
+
 <div class="label">4. Selecciona una cancha</div>
+
 <div id="courts" class="courts"></div>
+
 </section>
+
 
 <section id="confirmCard" class="card hidden">
+
 <div class="label">5. Confirma tu reserva</div>
+
 <div id="guestData" class="hidden">
+
 <label>Nombre</label>
-<input id="guestName" type="text" placeholder="Nombre y apellido">
+
+<input
+id="guestName"
+type="text"
+placeholder="Nombre y apellido">
+
 <label>Teléfono</label>
-<input id="guestPhone" type="tel" placeholder="Teléfono">
+
+<input
+id="guestPhone"
+type="tel"
+placeholder="Teléfono">
+
 </div>
+
 <div id="summary" class="summary"></div>
-<button id="confirmBtn" class="confirm" disabled onclick="confirmBooking()">Confirmar reserva</button>
+
+<button
+id="confirmBtn"
+class="confirm"
+disabled
+onclick="confirmBooking()">
+
+Confirmar reserva
+
+</button>
+
 </section>
+
 
 <section id="success" class="card success hidden">
+
 <div class="check">✓</div>
+
 <h2>Reserva confirmada</h2>
+
 <p id="successText"></p>
+
+<button
+class="home-btn"
+onclick="returnHome()">
+
+Volver al inicio
+
+</button>
+
 </section>
+
 </main>
 
-<div class="bottom"><button id="bottomBtn" disabled>Selecciona una fecha</button></div>
+
+<div class="bottom">
+
+<button
+id="bottomBtn"
+disabled>
+
+Selecciona una fecha
+
+</button>
+
 </div>
 
-<script>
-const availability={
-"2026-09-13":{"10:00":["Cancha 1","Cancha 2","Cancha 4"],"11:00":["Cancha 1","Cancha 3"],"16:00":["Cancha 2","Cancha 3","Cancha 4"],"20:00":["Cancha 1","Cancha 4"]},
-"2026-09-14":{"09:00":["Cancha 1","Cancha 2","Cancha 3","Cancha 4"],"10:00":["Cancha 1","Cancha 3"],"12:00":["Cancha 2","Cancha 4"],"17:00":["Cancha 1","Cancha 2"],"19:00":["Cancha 3","Cancha 4"]},
-"2026-09-15":{"08:00":["Cancha 1","Cancha 2"],"11:00":["Cancha 1","Cancha 4"],"15:00":["Cancha 2","Cancha 3","Cancha 4"],"18:00":["Cancha 1","Cancha 3"]},
-"2026-09-16":{"10:00":["Cancha 1","Cancha 2"],"11:00":["Cancha 2","Cancha 3","Cancha 4"],"16:00":["Cancha 1","Cancha 4"],"20:00":["Cancha 1","Cancha 2","Cancha 3"]},
-"2026-09-17":{"09:00":["Cancha 2","Cancha 3"],"13:00":["Cancha 1","Cancha 4"],"16:00":["Cancha 1","Cancha 2","Cancha 4"],"19:00":["Cancha 3"]},
-"2026-09-18":{"10:00":["Cancha 1","Cancha 2"],"12:00":["Cancha 3","Cancha 4"],"17:00":["Cancha 1","Cancha 3"],"20:00":["Cancha 2","Cancha 4"]},
-"2026-09-19":{"09:00":["Cancha 1","Cancha 2","Cancha 3"],"11:00":["Cancha 4"],"15:00":["Cancha 1","Cancha 2"],"18:00":["Cancha 3","Cancha 4"]}
-};
-const courts=["Cancha 1","Cancha 2","Cancha 3","Cancha 4"];
-const allTimes=["09:00","10:00","11:00","12:00","13:00","16:00","17:00","18:00","19:00","20:00","21:00"];
-let selectedDate="2026-09-13", user="socio", selectedTime=null, selectedCourt=null, view=new Date(2026,8,13);
+</div>
 
-function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-function moveMonth(n){view.setMonth(view.getMonth()+n);renderCalendar()}
+
+<script>
+
+const availability={
+
+"2026-09-13":{
+"10:00":["Cancha 1","Cancha 2","Cancha 4"],
+"11:00":["Cancha 1","Cancha 3"],
+"16:00":["Cancha 2","Cancha 3","Cancha 4"],
+"20:00":["Cancha 1","Cancha 4"]
+},
+
+"2026-09-14":{
+"09:00":["Cancha 1","Cancha 2","Cancha 3","Cancha 4"],
+"10:00":["Cancha 1","Cancha 3"],
+"12:00":["Cancha 2","Cancha 4"],
+"17:00":["Cancha 1","Cancha 2"],
+"19:00":["Cancha 3","Cancha 4"]
+},
+
+"2026-09-15":{
+"08:00":["Cancha 1","Cancha 2"],
+"11:00":["Cancha 1","Cancha 4"],
+"15:00":["Cancha 2","Cancha 3","Cancha 4"],
+"18:00":["Cancha 1","Cancha 3"]
+},
+
+"2026-09-16":{
+"10:00":["Cancha 1","Cancha 2"],
+"11:00":["Cancha 2","Cancha 3","Cancha 4"],
+"16:00":["Cancha 1","Cancha 4"],
+"20:00":["Cancha 1","Cancha 2","Cancha 3"]
+},
+
+"2026-09-17":{
+"09:00":["Cancha 2","Cancha 3"],
+"13:00":["Cancha 1","Cancha 4"],
+"16:00":["Cancha 1","Cancha 2","Cancha 4"],
+"19:00":["Cancha 3"]
+},
+
+"2026-09-18":{
+"10:00":["Cancha 1","Cancha 2"],
+"12:00":["Cancha 3","Cancha 4"],
+"17:00":["Cancha 1","Cancha 3"],
+"20:00":["Cancha 2","Cancha 4"]
+},
+
+"2026-09-19":{
+"09:00":["Cancha 1","Cancha 2","Cancha 3"],
+"11:00":["Cancha 4"],
+"15:00":["Cancha 1","Cancha 2"],
+"18:00":["Cancha 3","Cancha 4"]
+}
+
+};
+
+const courts=[
+"Cancha 1",
+"Cancha 2",
+"Cancha 3",
+"Cancha 4"
+];
+
+const allTimes=[
+"09:00",
+"10:00",
+"11:00",
+"12:00",
+"13:00",
+"16:00",
+"17:00",
+"18:00",
+"19:00",
+"20:00",
+"21:00"
+];
+
+let selectedDate="2026-09-13";
+let user="socio";
+let selectedTime=null;
+let selectedCourt=null;
+let view=new Date(2026,8,13);
+
+
+function iso(d){
+
+return d.getFullYear()
++"-"
++String(d.getMonth()+1).padStart(2,"0")
++"-"
++String(d.getDate()).padStart(2,"0");
+
+}
+
+
+function moveMonth(n){
+
+view.setMonth(view.getMonth()+n);
+
+renderCalendar();
+
+}
+
+
 function renderCalendar(){
- document.getElementById("month").textContent=view.toLocaleDateString("es-CL",{month:"long",year:"numeric"}).toUpperCase();
- const box=document.getElementById("calendar");box.innerHTML="";
- const first=new Date(view.getFullYear(),view.getMonth(),1), start=(first.getDay()+6)%7;
- for(let i=0;i<start;i++)box.appendChild(document.createElement("div"));
- for(let n=1;n<=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();n++){
-  const d=new Date(view.getFullYear(),view.getMonth(),n), b=document.createElement("button");
-  b.className="day"+(iso(d)===selectedDate?" selected":"");b.textContent=n;
-  b.onclick=()=>selectDate(iso(d));box.appendChild(b);
- }
+
+document.getElementById("month").textContent=
+view.toLocaleDateString(
+"es-CL",
+{
+month:"long",
+year:"numeric"
 }
-function selectDate(d){selectedDate=d;selectedTime=null;selectedCourt=null;renderCalendar();renderAll()}
-function chooseUser(u){user=u;selectedTime=null;selectedCourt=null;document.getElementById("member").classList.toggle("active",u==="socio");document.getElementById("guest").classList.toggle("active",u==="externo");renderAll()}
-function freeCourts(t){return (availability[selectedDate]&&availability[selectedDate][t])||[]}
+).toUpperCase();
+
+const box=document.getElementById("calendar");
+
+box.innerHTML="";
+
+const first=
+new Date(
+view.getFullYear(),
+view.getMonth(),
+1
+);
+
+const start=
+(first.getDay()+6)%7;
+
+for(let i=0;i<start;i++){
+
+box.appendChild(
+document.createElement("div")
+);
+
+}
+
+for(
+let n=1;
+n<=new Date(
+view.getFullYear(),
+view.getMonth()+1,
+0
+).getDate();
+n++
+){
+
+const d=
+new Date(
+view.getFullYear(),
+view.getMonth(),
+n
+);
+
+const b=
+document.createElement("button");
+
+b.className=
+"day"
++(iso(d)===selectedDate?" selected":"");
+
+b.textContent=n;
+
+b.onclick=()=>{
+selectDate(iso(d))
+};
+
+box.appendChild(b);
+
+}
+
+}
+
+
+function selectDate(d){
+
+selectedDate=d;
+selectedTime=null;
+selectedCourt=null;
+
+renderCalendar();
+renderAll();
+
+}
+
+
+function chooseUser(u){
+
+user=u;
+selectedTime=null;
+selectedCourt=null;
+
+document
+.getElementById("member")
+.classList
+.toggle(
+"active",
+u==="socio"
+);
+
+document
+.getElementById("guest")
+.classList
+.toggle(
+"active",
+u==="externo"
+);
+
+renderAll();
+
+}
+
+
+function freeCourts(t){
+
+return(
+availability[selectedDate]
+&&
+availability[selectedDate][t]
+)
+||[];
+
+}
+
+
 function renderTimes(){
- const box=document.getElementById("times");box.innerHTML="";
- const arr=allTimes.filter(t=>freeCourts(t).length && (user==="socio" || ["10:00","12:00","17:00","19:00"].includes(t)));
- if(!arr.length){box.innerHTML='<div class="no-time">No hay horas disponibles.</div>';return}
- arr.forEach(t=>{
-  const b=document.createElement("button");b.className="time"+(t===selectedTime?" selected":"");
-  b.innerHTML=t+"<small>"+freeCourts(t).length+" canchas disponibles</small>";
-  b.onclick=()=>{selectedTime=t;selectedCourt=null;renderTimes();renderCourts();renderConfirm()};
-  box.appendChild(b);
- });
+
+const box=
+document.getElementById("times");
+
+box.innerHTML="";
+
+const arr=
+allTimes.filter(
+t=>
+freeCourts(t).length
+&&
+(
+user==="socio"
+||
+[
+"10:00",
+"12:00",
+"17:00",
+"19:00"
+].includes(t)
+)
+);
+
+if(!arr.length){
+
+box.innerHTML=
+'<div class="no-time">No hay horas disponibles.</div>';
+
+return;
+
 }
+
+arr.forEach(t=>{
+
+const b=
+document.createElement("button");
+
+b.className=
+"time"
++(t===selectedTime?" selected":"");
+
+b.innerHTML=
+t
++
+"<small>"
++
+freeCourts(t).length
++
+" canchas disponibles</small>";
+
+b.onclick=()=>{
+
+selectedTime=t;
+selectedCourt=null;
+
+renderTimes();
+renderCourts();
+renderConfirm();
+updateBottom();
+
+};
+
+box.appendChild(b);
+
+});
+
+}
+
+
 function renderCourts(){
- const box=document.getElementById("courts");box.innerHTML="";
- if(!selectedTime)return;
- courts.forEach(c=>{
-  const b=document.createElement("button"), free=freeCourts(selectedTime).includes(c);
-  b.className="court "+(free?"": "busy")+(c===selectedCourt?" selected":"");
-  b.textContent=c+" · "+(free?"DISPONIBLE":"OCUPADA");b.disabled=!free;
-  if(free)b.onclick=()=>{selectedCourt=c;renderCourts();renderConfirm()};
-  box.appendChild(b);
- });
+
+const box=
+document.getElementById("courts");
+
+box.innerHTML="";
+
+if(!selectedTime)return;
+
+courts.forEach(c=>{
+
+const b=
+document.createElement("button");
+
+const free=
+freeCourts(selectedTime)
+.includes(c);
+
+b.className=
+"court "
++
+(free?"":"busy")
++
+(c===selectedCourt?" selected":"");
+
+b.textContent=
+c
++
+" · "
++
+(
+free
+?
+"DISPONIBLE"
+:
+"OCUPADA"
+);
+
+b.disabled=!free;
+
+if(free){
+
+b.onclick=()=>{
+
+selectedCourt=c;
+
+renderCourts();
+renderConfirm();
+updateBottom();
+
+};
+
 }
+
+box.appendChild(b);
+
+});
+
+}
+
+
 function renderConfirm(){
- const card=document.getElementById("confirmCard");
- card.classList.toggle("hidden",!selectedCourt);
- if(!selectedCourt)return;
- document.getElementById("guestData").classList.toggle("hidden",user!=="externo");
- document.getElementById("summary").innerHTML="<div><span>Fecha</span><b>"+selectedDate+"</b></div><div><span>Hora</span><b>"+selectedTime+"</b></div><div><span>Cancha</span><b>"+selectedCourt+"</b></div><div><span>Duración</span><b>60 minutos</b></div><div><span>Usuario</span><b>"+(user==="socio"?"Socio":"Externo")+"</b></div>";
- validate();
+
+const card=
+document.getElementById("confirmCard");
+
+card.classList.toggle(
+"hidden",
+!selectedCourt
+);
+
+if(!selectedCourt)return;
+
+document
+.getElementById("guestData")
+.classList
+.toggle(
+"hidden",
+user!=="externo"
+);
+
+document
+.getElementById("summary")
+.innerHTML=
+
+"<div><span>Fecha</span><b>"
++
+selectedDate
++
+"</b></div>"
+
++
+"<div><span>Hora</span><b>"
++
+selectedTime
++
+"</b></div>"
+
++
+"<div><span>Cancha</span><b>"
++
+selectedCourt
++
+"</b></div>"
+
++
+"<div><span>Duración</span><b>"
++
+"60 minutos"
++
+"</b></div>"
+
++
+"<div><span>Usuario</span><b>"
++
+(user==="socio"?"Socio":"Externo")
++
+"</b></div>";
+
+validate();
+
 }
+
+
 function renderAll(){
- document.getElementById("userCard").classList.remove("hidden");
- document.getElementById("timeCard").classList.remove("hidden");
- document.getElementById("courtCard").classList.remove("hidden");
- renderTimes();renderCourts();renderConfirm();updateBottom();
+
+document
+.getElementById("userCard")
+.classList
+.remove("hidden");
+
+document
+.getElementById("timeCard")
+.classList
+.remove("hidden");
+
+document
+.getElementById("courtCard")
+.classList
+.remove("hidden");
+
+renderTimes();
+renderCourts();
+renderConfirm();
+updateBottom();
+
 }
+
+
 function validate(){
- const ok=selectedCourt && (user==="socio" || (guestName.value.trim()&&guestPhone.value.trim()));
- confirmBtn.disabled=!ok;
+
+const ok=
+selectedCourt
+&&
+(
+user==="socio"
+||
+(
+guestName.value.trim()
+&&
+guestPhone.value.trim()
+)
+);
+
+confirmBtn.disabled=!ok;
+
 }
+
+
 function updateBottom(){
- const b=document.getElementById("bottomBtn");
- b.disabled=!selectedCourt;
- b.textContent=selectedCourt?"Continuar · "+selectedCourt+" · "+selectedTime:(selectedDate?"Selecciona una cancha":"Selecciona una fecha");
+
+const b=
+document.getElementById("bottomBtn");
+
+b.disabled=!selectedCourt;
+
+b.textContent=
+selectedCourt
+?
+"Continuar · "
++
+selectedCourt
++
+" · "
++
+selectedTime
+:
+(
+selectedDate
+?
+"Selecciona una cancha"
+:
+"Selecciona una fecha"
+);
+
 }
+
+
 function confirmBooking(){
- if(confirmBtn.disabled)return;
- document.querySelectorAll("main > section").forEach(x=>x.classList.add("hidden"));
- document.getElementById("success").classList.remove("hidden");
- document.getElementById("successText").textContent=selectedDate+" · "+selectedTime+" · "+selectedCourt+" · 60 minutos";
- document.querySelector(".bottom").style.display="none";
+
+if(confirmBtn.disabled)return;
+
+document
+.querySelectorAll("main > section")
+.forEach(
+x=>x.classList.add("hidden")
+);
+
+document
+.getElementById("success")
+.classList
+.remove("hidden");
+
+document
+.getElementById("successText")
+.textContent=
+selectedDate
++
+" · "
++
+selectedTime
++
+" · "
++
+selectedCourt
++
+" · 60 minutos";
+
+document
+.querySelector(".bottom")
+.style.display="none";
+
 }
-guestName.addEventListener("input",validate);guestPhone.addEventListener("input",validate);
-renderCalendar();renderAll();
+
+
+function returnHome(){
+
+selectedDate="2026-09-13";
+user="socio";
+selectedTime=null;
+selectedCourt=null;
+view=new Date(2026,8,13);
+
+document
+.getElementById("guestName")
+.value="";
+
+document
+.getElementById("guestPhone")
+.value="";
+
+document
+.getElementById("success")
+.classList
+.add("hidden");
+
+document
+.querySelector(".bottom")
+.style
+.display="block";
+
+document
+.getElementById("member")
+.classList
+.add("active");
+
+document
+.getElementById("guest")
+.classList
+.remove("active");
+
+renderCalendar();
+renderAll();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+guestName.addEventListener(
+"input",
+validate
+);
+
+guestPhone.addEventListener(
+"input",
+validate
+);
+
+renderCalendar();
+renderAll();
+
 </script>
+
 </body>
 </html>
