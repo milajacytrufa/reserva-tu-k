@@ -8,412 +8,199 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
   margin:0;
   background:#f6f5fb;
   color:#292929;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
 }
-
-.app{
-  max-width:760px;
-  margin:auto;
-  min-height:100vh
-}
-
+.app{max-width:980px;margin:auto;min-height:100vh}
 header{
-  height:78px;
-  background:#fff;
-  border-bottom:1px solid #e4e4e8;
-  display:flex;
-  align-items:center;
-  padding:10px 18px;
-  gap:12px
+  height:66px;background:#fff;border-bottom:1px solid #e2e2e8;
+  display:flex;align-items:center;padding:8px 16px;gap:10px
 }
+.logo{width:43px;height:43px}
+.brand{font-size:18px;font-weight:850;color:#263b7a;line-height:1.05}
+.sub{font-size:10px;color:#777;margin-top:2px}
 
-.logo{
-  width:50px;
-  height:50px
-}
-
-.brand{
-  font-size:21px;
-  font-weight:850;
-  color:#263b7a
-}
-
-.sub{
-  font-size:12px;
-  color:#777
-}
-
-main{
-  padding:18px 16px 110px
-}
-
-h1{
-  font-size:25px;
-  color:#263b7a;
-  margin:0 0 18px
-}
+main{padding:14px 12px 92px}
+h1{font-size:23px;color:#263b7a;margin:0 0 12px}
 
 .card{
-  background:#fff;
-  border:1px solid #e1e1e7;
-  border-radius:14px;
-  padding:16px;
-  margin-bottom:15px
+  background:#fff;border:1px solid #dedfe6;border-radius:11px;
+  padding:11px;margin-bottom:10px
 }
+.label{font-size:14px;font-weight:850;margin-bottom:9px}
 
-.label{
-  font-size:18px;
-  font-weight:800;
-  margin-bottom:12px
+.top-grid{
+  display:grid;grid-template-columns:1.55fr 1fr;gap:10px;
+  align-items:stretch
 }
+.top-grid>.card{margin-bottom:0}
 
 .calendar-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:7px
 }
-
-.month{
-  font-size:18px;
-  font-weight:850;
-  color:#263b7a
-}
-
+.month{font-size:14px;font-weight:850;color:#263b7a}
 .arrow{
-  width:38px;
-  height:35px;
-  border:0;
-  border-radius:8px;
-  background:#eef0f5;
-  color:#263b7a;
-  font-size:22px
+  width:27px;height:25px;border:0;border-radius:6px;background:#eef0f5;
+  color:#263b7a;font-size:17px;line-height:1
 }
-
 .week,.calendar{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px
+  display:grid;grid-template-columns:repeat(7,1fr);gap:2px
 }
-
 .week{
-  font-size:10px;
-  color:#777;
-  font-weight:800;
-  text-align:center;
-  margin-bottom:5px
+  font-size:8px;color:#777;font-weight:800;text-align:center;margin-bottom:2px
 }
-
 .day{
-  height:43px;
-  border:1px solid transparent;
-  background:#fff;
-  border-radius:9px;
-  font-size:14px;
-  cursor:pointer
+  height:29px;border:1px solid transparent;background:#fff;border-radius:6px;
+  font-size:10px;cursor:pointer
 }
+.day:hover{border-color:#b8d96b}
+.day.selected{background:#263b7a;color:#fff;font-weight:800}
 
-.day:hover{
-  border-color:#b8d96b
-}
-
-.day.selected{
-  background:#263b7a;
-  color:#fff;
-  font-weight:800
-}
-
-.user-buttons{
-  display:flex;
-  gap:9px
-}
-
+.user-buttons{display:flex;gap:6px}
 .user-buttons button{
-  flex:1;
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:9px;
-  padding:12px;
-  font-weight:800;
-  color:#263b7a
+  flex:1;border:1px solid #ddd;background:#fff;border-radius:7px;
+  padding:9px 6px;font-weight:800;color:#263b7a;font-size:11px
 }
+.user-buttons button.active{background:#263b7a;color:#fff;border-color:#263b7a}
+.note{font-size:9px;color:#777;margin-top:6px}
 
-.user-buttons button.active{
-  background:#263b7a;
-  color:#fff;
-  border-color:#263b7a
+#memberLoginCard{
+  margin:9px 0 0;padding:10px;border-radius:9px;background:#fafaff
 }
-
-.times{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px
+#memberLoginCard .label{font-size:13px;margin-bottom:6px}
+#memberLoginCard label{font-size:9px}
+input{
+  width:100%;padding:8px;border:1px solid #d5d7dc;border-radius:7px;
+  font-size:14px;margin:3px 0 7px
 }
+.confirm,.home-btn{
+  width:100%;border:0;border-radius:22px;padding:10px;
+  background:#263b7a;color:#fff;font-size:13px;font-weight:850
+}
+.confirm:disabled{background:#b8d779}
+.home-btn{margin-top:7px}
 
+.flow-card{margin-top:10px}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
 .time{
-  border:1px solid #cbe49a;
-  background:#f0f9dc;
-  color:#3c5d0b;
-  border-radius:9px;
-  padding:13px 5px;
-  font-weight:850;
-  cursor:pointer
+  border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;
+  border-radius:7px;padding:9px 4px;font-size:12px;font-weight:850;cursor:pointer
 }
-
 .time.selected{
-  background:#b8e53f;
-  border-color:#b8e53f;
-  outline:3px solid #dfeebc
+  background:#b8e53f;border-color:#b8e53f;outline:2px solid #dfeebc
 }
+.time small{display:block;font-size:8px;margin-top:3px}
 
-.time small{
-  display:block;
-  font-size:10px;
-  margin-top:4px
-}
-
-.courts{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px
-}
-
+.courts{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
 .court{
-  border:1px solid #cbe49a;
-  background:#f0f9dc;
-  color:#3c5d0b;
-  border-radius:9px;
-  padding:14px 7px;
-  font-weight:850;
-  cursor:pointer
+  border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;
+  border-radius:7px;padding:10px 6px;font-size:12px;font-weight:850;cursor:pointer
 }
-
 .court.selected{
-  background:#b8e53f;
-  border-color:#b8e53f;
-  outline:3px solid #dfeebc
+  background:#b8e53f;border-color:#b8e53f;outline:2px solid #dfeebc
 }
-
-.busy{
-  background:#eeeef1;
-  color:#999;
-  border-color:#e2e2e5;
-  cursor:not-allowed
-}
+.busy{background:#eeeef1;color:#999;border-color:#e2e2e5;cursor:not-allowed}
 
 .summary div{
-  display:flex;
-  justify-content:space-between;
-  border-bottom:1px solid #eee;
-  padding:9px 0;
-  font-size:14px
+  display:flex;justify-content:space-between;border-bottom:1px solid #eee;
+  padding:7px 0;font-size:12px
 }
+.summary div:last-child{border-bottom:0}
+.summary b{color:#263b7a}
 
-.summary div:last-child{
-  border-bottom:0
-}
-
-.summary b{
-  color:#263b7a
-}
-
-input{
-  width:100%;
-  padding:12px;
-  border:1px solid #d5d7dc;
-  border-radius:9px;
-  font-size:16px;
-  margin:4px 0 11px
-}
-
-.confirm{
-  width:100%;
-  border:0;
-  border-radius:25px;
-  padding:14px;
-  background:#263b7a;
-  color:#fff;
-  font-size:17px;
-  font-weight:850
-}
-
-.confirm:disabled{
-  background:#b8d779
-}
-
-.success{
-  text-align:center;
-  padding:25px 10px
-}
-
+.success{text-align:center;padding:22px 10px}
 .check{
-  margin:auto;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:#b8e53f;
-  display:grid;
-  place-items:center;
-  font-size:30px;
-  font-weight:900
+  margin:auto;width:52px;height:52px;border-radius:50%;background:#b8e53f;
+  display:grid;place-items:center;font-size:27px;font-weight:900
 }
-
-.success h2{
-  color:#263b7a
-}
-
-.success p{
-  color:#666
-}
-
-.home-btn{
-  width:100%;
-  border:0;
-  border-radius:25px;
-  padding:14px;
-  background:#263b7a;
-  color:#fff;
-  font-size:17px;
-  font-weight:850;
-  margin-top:12px
-}
-
-.hidden{
-  display:none
-}
+.success h2{color:#263b7a;font-size:20px}
+.success p{color:#666;font-size:13px}
 
 .bottom{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#fff;
-  border-top:1px solid #ddd;
-  padding:11px 16px
+  position:fixed;bottom:0;left:0;right:0;background:#fff;
+  border-top:1px solid #ddd;padding:8px 12px;z-index:10
 }
-
 .bottom button{
-  width:100%;
-  max-width:728px;
-  display:block;
-  margin:auto;
-  border:0;
-  border-radius:27px;
-  padding:14px;
-  background:#b8d779;
-  color:#fff;
-  font-size:18px;
-  font-weight:850
+  width:100%;max-width:956px;display:block;margin:auto;border:0;border-radius:24px;
+  padding:11px;background:#b8d779;color:#fff;font-size:14px;font-weight:850
 }
+.bottom button.ready{background:#263b7a}
 
-.bottom button.ready{
-  background:#263b7a
+.hidden{display:none!important}
+.no-time{font-size:12px;color:#777;padding:8px}
+
+@media(max-width:650px){
+  .app{max-width:520px}
+  .top-grid{grid-template-columns:1fr;gap:8px}
+  .top-grid>.card{margin-bottom:0}
+  .times{grid-template-columns:repeat(3,1fr)}
 }
-
-.note{
-  font-size:12px;
-  color:#777;
-  margin-top:8px
-}
-
-@media(max-width:500px){
-  .times{
-    grid-template-columns:repeat(2,1fr)
-  }
+@media(max-width:420px){
+  header{height:58px;padding:6px 12px}
+  .logo{width:37px;height:37px}
+  .brand{font-size:16px}
+  .sub{font-size:8px}
+  main{padding:11px 9px 84px}
+  h1{font-size:20px;margin-bottom:9px}
+  .card{padding:9px;margin-bottom:8px}
+  .label{font-size:13px}
+  .day{height:27px;font-size:9px}
+  .month{font-size:13px}
+  .times{grid-template-columns:repeat(2,1fr)}
+  .time{padding:8px 3px}
 }
 </style>
 </head>
 
 <body>
-
 <div class="app">
 
 <header>
-
-<img
-class="logo"
+<img class="logo"
 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDYiIGZpbGw9IiNiOGU1M2YiLz4KPHBhdGggZD0iTTcgMzVjMTggMiAzMSAxNCAzNiAzMSA0IDEzIDMgMjMtMSAzMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOTMgNjVjLTE4LTItMzEtMTQtMzYtMzEtNC0xMy0zLTIzIDEtMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+"
 alt="Pelota de tenis">
-
 <div>
 <div class="brand">Reserva Tu K</div>
 <div class="sub">Reserva de cancha</div>
 </div>
-
 </header>
 
 <main>
-
 <h1>Reserva de Cancha</h1>
 
+<section class="top-grid flow-section">
+
 <section id="dateCard" class="card">
-
 <div class="label">1. Selecciona la fecha</div>
-
 <div class="calendar-head">
-
 <button class="arrow" onclick="moveMonth(-1)">‹</button>
-
 <div id="month" class="month"></div>
-
 <button class="arrow" onclick="moveMonth(1)">›</button>
-
 </div>
-
 <div class="week">
-<span>LUN</span>
-<span>MAR</span>
-<span>MIÉ</span>
-<span>JUE</span>
-<span>VIE</span>
-<span>SÁB</span>
-<span>DOM</span>
+<span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span>
+<span>VIE</span><span>SÁB</span><span>DOM</span>
 </div>
-
 <div id="calendar" class="calendar"></div>
-
 </section>
 
-
-<section id="userCard" class="card hidden">
-
+<section id="userPanel" class="card">
+<section id="userCard">
 <div class="label">2. ¿Quién reserva?</div>
-
 <div class="user-buttons">
-
-<button
-id="member"
-class="active"
-onclick="chooseUser('socio')">
-Socio
-</button>
-
-<button
-id="guest"
-onclick="chooseUser('externo')">
-Externo
-</button>
-
+<button id="member" class="active" onclick="chooseUser('socio')">Socio</button>
+<button id="guest" onclick="chooseUser('externo')">Externo</button>
 </div>
-
-<div class="note">
-Los horarios pueden ser diferentes para socios y externos.
-</div>
-
+<div class="note">Los horarios pueden ser diferentes para socios y externos.</div>
 </section>
-
 
 <section id="memberLoginCard" class="card hidden">
-
 <div class="label">Identificación del socio</div>
 
 <div id="memberLoggedOut">
-
 <label>Número de socio</label>
 <input id="memberNumber" type="text" inputmode="numeric" placeholder="Ej.: 001" maxlength="6">
 
@@ -425,169 +212,87 @@ Ingresar como socio
 </button>
 
 <div id="loginMessage" class="note"></div>
-
 </div>
 
 <div id="memberLoggedIn" class="hidden">
-
-<div class="note">
-Socio identificado: <b id="memberName"></b>
+<div class="note">Socio identificado: <b id="memberName"></b></div>
+<button class="home-btn" type="button" onclick="logoutMember()">Cambiar socio</button>
 </div>
-
-<button class="home-btn" type="button" onclick="logoutMember()">
-Cambiar socio
-</button>
-
-</div>
-
+</section>
+</section>
 </section>
 
-
-<section id="timeCard" class="card hidden">
-
+<section id="timeCard" class="card flow-card flow-section hidden">
 <div class="label">3. Selecciona una hora</div>
-
 <div id="times" class="times"></div>
-
 </section>
 
-
-<section id="courtCard" class="card hidden">
-
+<section id="courtCard" class="card flow-card flow-section hidden">
 <div class="label">4. Selecciona una cancha</div>
-
 <div id="courts" class="courts"></div>
-
 </section>
 
-
-<section id="confirmCard" class="card hidden">
-
+<section id="confirmCard" class="card flow-card flow-section hidden">
 <div class="label">5. Confirma tu reserva</div>
 
 <div id="guestData" class="hidden">
-
 <label>Nombre</label>
-
-<input
-id="guestName"
-type="text"
-placeholder="Nombre y apellido">
-
+<input id="guestName" type="text" placeholder="Nombre y apellido">
 <label>Teléfono</label>
-
-<input
-id="guestPhone"
-type="tel"
-placeholder="Teléfono">
-
+<input id="guestPhone" type="tel" placeholder="Teléfono">
 </div>
 
 <div id="summary" class="summary"></div>
 
-<button
-id="confirmBtn"
-class="confirm"
-disabled
-onclick="confirmBooking()">
-
+<button id="confirmBtn" class="confirm" disabled onclick="confirmBooking()">
 Confirmar reserva
-
 </button>
-
 </section>
 
-
 <section id="success" class="card success hidden">
-
 <div class="check">✓</div>
-
 <h2>Reserva confirmada</h2>
-
 <p id="successText"></p>
-
-<button
-class="home-btn"
-onclick="returnHome()">
-
-Volver al inicio
-
-</button>
-
+<button class="home-btn" onclick="returnHome()">Volver al inicio</button>
 </section>
 
 </main>
 
-
 <div class="bottom">
-
-<button
-id="bottomBtn"
-disabled>
-
-Selecciona una fecha
-
-</button>
-
+<button id="bottomBtn" disabled>Selecciona una fecha</button>
 </div>
 
 </div>
-
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  limit,
-  getDocs
+getFirestore,collection,query,where,limit,getDocs
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyATQUnlMOsz5XwS0FAwtaHB1-IJmlmbF78",
-  authDomain: "reserva-tu-k.firebaseapp.com",
-  projectId: "reserva-tu-k",
-  storageBucket: "reserva-tu-k.firebasestorage.app",
-  messagingSenderId: "332717076435",
-  appId: "1:332717076435:web:09449bf0bde428f1358926"
+const firebaseConfig={
+apiKey:"AIzaSyATQUnlMOsz5XwS0FAwtaHB1-IJmlmbF78",
+authDomain:"reserva-tu-k.firebaseapp.com",
+projectId:"reserva-tu-k",
+storageBucket:"reserva-tu-k.firebasestorage.app",
+messagingSenderId:"332717076435",
+appId:"1:332717076435:web:09449bf0bde428f1358926"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-window.auth = auth;
-window.db = db;
-window.signInWithEmailAndPassword = signInWithEmailAndPassword;
-window.onAuthStateChanged = onAuthStateChanged;
-window.signOut = signOut;
-window.collection = collection;
-window.query = query;
-window.where = where;
-window.limit = limit;
-window.getDocs = getDocs;
-
-let firebaseUser=null;
-let currentMember=null;
-let firebaseReady=false;
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
 const availability={
-
 "2026-09-13":{
 "10:00":["Cancha 1","Cancha 2"],
 "11:00":["Cancha 1"],
 "16:00":["Cancha 1","Cancha 2"],
 "20:00":["Cancha 2"]
 },
-
 "2026-09-14":{
 "09:00":["Cancha 1","Cancha 2"],
 "10:00":["Cancha 1"],
@@ -595,448 +300,193 @@ const availability={
 "17:00":["Cancha 1","Cancha 2"],
 "19:00":["Cancha 1"]
 },
-
 "2026-09-15":{
 "08:00":["Cancha 1","Cancha 2"],
 "11:00":["Cancha 1"],
 "15:00":["Cancha 2"],
 "18:00":["Cancha 1","Cancha 2"]
 },
-
 "2026-09-16":{
 "10:00":["Cancha 1","Cancha 2"],
 "11:00":["Cancha 2"],
 "16:00":["Cancha 1"],
 "20:00":["Cancha 1","Cancha 2"]
 },
-
 "2026-09-17":{
 "09:00":["Cancha 2"],
 "13:00":["Cancha 1"],
 "16:00":["Cancha 1","Cancha 2"],
 "19:00":["Cancha 2"]
 },
-
 "2026-09-18":{
 "10:00":["Cancha 1","Cancha 2"],
 "12:00":["Cancha 1"],
 "17:00":["Cancha 1","Cancha 2"],
 "20:00":["Cancha 2"]
 },
-
 "2026-09-19":{
 "09:00":["Cancha 1"],
 "11:00":["Cancha 2"],
 "15:00":["Cancha 1","Cancha 2"],
 "18:00":["Cancha 1"]
 }
-
 };
 
-const courts=[
-"Cancha 1",
-"Cancha 2"
-];
+const courts=["Cancha 1","Cancha 2"];
 
 const allTimes=[
-"09:00",
-"10:00",
-"11:00",
-"12:00",
-"13:00",
-"16:00",
-"17:00",
-"18:00",
-"19:00",
-"20:00",
-"21:00"
+"09:00","10:00","11:00","12:00","13:00",
+"16:00","17:00","18:00","19:00","20:00","21:00"
 ];
 
+let firebaseUser=null;
+let currentMember=null;
 let selectedDate="2026-09-13";
 let user="socio";
 let selectedTime=null;
 let selectedCourt=null;
 let view=new Date(2026,8,13);
 
-
 function iso(d){
-
-return d.getFullYear()
-+"-"
-+String(d.getMonth()+1).padStart(2,"0")
-+"-"
-+String(d.getDate()).padStart(2,"0");
-
+return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
-
 
 function moveMonth(n){
-
 view.setMonth(view.getMonth()+n);
-
 renderCalendar();
-
 }
-
 
 function renderCalendar(){
-
-document.getElementById("month").textContent=
-view.toLocaleDateString(
-"es-CL",
-{
-month:"long",
-year:"numeric"
-}
-).toUpperCase();
-
+document.getElementById("month").textContent=view.toLocaleDateString("es-CL",{month:"long",year:"numeric"}).toUpperCase();
 const box=document.getElementById("calendar");
-
 box.innerHTML="";
+const first=new Date(view.getFullYear(),view.getMonth(),1);
+const start=(first.getDay()+6)%7;
 
-const first=
-new Date(
-view.getFullYear(),
-view.getMonth(),
-1
-);
+for(let i=0;i<start;i++) box.appendChild(document.createElement("div"));
 
-const start=
-(first.getDay()+6)%7;
-
-for(let i=0;i<start;i++){
-
-box.appendChild(
-document.createElement("div")
-);
-
-}
-
-for(
-let n=1;
-n<=new Date(
-view.getFullYear(),
-view.getMonth()+1,
-0
-).getDate();
-n++
-){
-
-const d=
-new Date(
-view.getFullYear(),
-view.getMonth(),
-n
-);
-
-const b=
-document.createElement("button");
-
-b.className=
-"day"
-+(iso(d)===selectedDate?" selected":"");
-
+for(let n=1;n<=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();n++){
+const d=new Date(view.getFullYear(),view.getMonth(),n);
+const b=document.createElement("button");
+b.className="day"+(iso(d)===selectedDate?" selected":"");
 b.textContent=n;
-
-b.onclick=()=>{
-selectDate(iso(d))
-};
-
+b.onclick=()=>selectDate(iso(d));
 box.appendChild(b);
-
 }
-
 }
-
 
 function selectDate(d){
-
 selectedDate=d;
 selectedTime=null;
 selectedCourt=null;
-
 renderCalendar();
 renderAll();
-
 }
 
-
 function chooseUser(u){
-
 user=u;
 selectedTime=null;
 selectedCourt=null;
-
-document
-.getElementById("member")
-.classList
-.toggle(
-"active",
-u==="socio"
-);
-
-document
-.getElementById("guest")
-.classList
-.toggle(
-"active",
-u==="externo"
-);
-
+document.getElementById("member").classList.toggle("active",u==="socio");
+document.getElementById("guest").classList.toggle("active",u==="externo");
 renderAll();
-
 }
-
 
 function freeCourts(t){
-
-return(
-availability[selectedDate]
-&&
-availability[selectedDate][t]
-)
-||[];
-
+return (availability[selectedDate]&&availability[selectedDate][t])||[];
 }
 
-
 function renderTimes(){
-
-const box=
-document.getElementById("times");
-
+const box=document.getElementById("times");
 box.innerHTML="";
+if(user==="socio"&&!currentMember)return;
 
-if(user==="socio" && !currentMember)return;
-
-const arr=
-allTimes.filter(
-t=>
-freeCourts(t).length
-&&
-(
-user==="socio"
-||
-[
-"10:00",
-"12:00",
-"17:00",
-"19:00"
-].includes(t)
-)
-);
+const arr=allTimes.filter(t=>freeCourts(t).length&&(
+user==="socio"||["10:00","12:00","17:00","19:00"].includes(t)
+));
 
 if(!arr.length){
-
-box.innerHTML=
-'<div class="no-time">No hay horas disponibles.</div>';
-
+box.innerHTML='<div class="no-time">No hay horas disponibles.</div>';
 return;
-
 }
 
 arr.forEach(t=>{
-
-const b=
-document.createElement("button");
-
-b.className=
-"time"
-+(t===selectedTime?" selected":"");
-
-b.innerHTML=
-t
-+
-"<small>"
-+
-freeCourts(t).length
-+
-" canchas disponibles</small>";
-
+const b=document.createElement("button");
+b.className="time"+(t===selectedTime?" selected":"");
+b.innerHTML=t+"<small>"+freeCourts(t).length+" canchas disponibles</small>";
 b.onclick=()=>{
-
 selectedTime=t;
 selectedCourt=null;
-
 renderTimes();
 renderCourts();
 renderConfirm();
 updateBottom();
-
 };
-
 box.appendChild(b);
-
 });
-
 }
 
-
 function renderCourts(){
-
-const box=
-document.getElementById("courts");
-
+const box=document.getElementById("courts");
 box.innerHTML="";
-
 if(!selectedTime)return;
 
 courts.forEach(c=>{
-
-const b=
-document.createElement("button");
-
-const free=
-freeCourts(selectedTime)
-.includes(c);
-
-b.className=
-"court "
-+
-(free?"":"busy")
-+
-(c===selectedCourt?" selected":"");
-
-b.textContent=
-c
-+
-" · "
-+
-(
-free
-?
-"DISPONIBLE"
-:
-"OCUPADA"
-);
-
+const b=document.createElement("button");
+const free=freeCourts(selectedTime).includes(c);
+b.className="court "+(free?"":"busy")+(c===selectedCourt?" selected":"");
+b.textContent=c+" · "+(free?"DISPONIBLE":"OCUPADA");
 b.disabled=!free;
 
 if(free){
-
 b.onclick=()=>{
-
 selectedCourt=c;
-
 renderCourts();
 renderConfirm();
 updateBottom();
-
 };
-
 }
-
 box.appendChild(b);
-
 });
-
 }
-
 
 function renderConfirm(){
-
-const card=
-document.getElementById("confirmCard");
-
-card.classList.toggle(
-"hidden",
-!selectedCourt
-);
-
+const card=document.getElementById("confirmCard");
+card.classList.toggle("hidden",!selectedCourt);
 if(!selectedCourt)return;
 
-document
-.getElementById("guestData")
-.classList
-.toggle(
-"hidden",
-user!=="externo"
-);
+document.getElementById("guestData").classList.toggle("hidden",user!=="externo");
 
-document
-.getElementById("summary")
-.innerHTML=
-
-"<div><span>Fecha</span><b>"
-+
-selectedDate
-+
-"</b></div>"
-
-+
-"<div><span>Hora</span><b>"
-+
-selectedTime
-+
-"</b></div>"
-
-+
-"<div><span>Cancha</span><b>"
-+
-selectedCourt
-+
-"</b></div>"
-
-+
-"<div><span>Duración</span><b>"
-+
-"60 minutos"
-+
-"</b></div>"
-
-+
-"<div><span>Usuario</span><b>"
-+
-(user==="socio"?"Socio":"Externo")
-+
-"</b></div>";
+document.getElementById("summary").innerHTML=
+"<div><span>Fecha</span><b>"+selectedDate+"</b></div>"+
+"<div><span>Hora</span><b>"+selectedTime+"</b></div>"+
+"<div><span>Cancha</span><b>"+selectedCourt+"</b></div>"+
+"<div><span>Duración</span><b>60 minutos</b></div>"+
+"<div><span>Usuario</span><b>"+(user==="socio"?"Socio":"Externo")+"</b></div>";
 
 validate();
-
 }
 
-
 function renderAll(){
+document.getElementById("memberLoginCard").classList.toggle("hidden",user!=="socio");
+const canReserve=user==="externo"||!!currentMember;
 
-document
-.getElementById("userCard")
-.classList
-.remove("hidden");
-
-const memberLoginCard=document.getElementById("memberLoginCard");
-memberLoginCard.classList.toggle("hidden",user!=="socio");
-
-const canReserve=user==="externo" || !!currentMember;
-
-document
-.getElementById("timeCard")
-.classList
-.toggle("hidden",!canReserve);
-
-document
-.getElementById("courtCard")
-.classList
-.toggle("hidden",!canReserve);
+document.getElementById("timeCard").classList.toggle("hidden",!canReserve);
+document.getElementById("courtCard").classList.toggle("hidden",!canReserve);
 
 renderTimes();
 renderCourts();
 renderConfirm();
 updateBottom();
-
 }
 
-
-
 function showLoginMessage(message,isError=true){
-
 const el=document.getElementById("loginMessage");
 el.textContent=message;
 el.style.color=isError?"#b42318":"#3c5d0b";
-
 }
 
 async function loginMember(){
-
 const number=document.getElementById("memberNumber").value.trim();
 const pin=document.getElementById("memberPin").value.trim();
 const button=document.getElementById("memberLoginBtn");
@@ -1045,7 +495,6 @@ if(!/^\d{1,6}$/.test(number)){
 showLoginMessage("Ingresa un número de socio válido.");
 return;
 }
-
 if(!/^\d{6}$/.test(pin)){
 showLoginMessage("El PIN debe tener 6 dígitos.");
 return;
@@ -1059,14 +508,8 @@ button.textContent="Verificando...";
 showLoginMessage("Verificando socio...",false);
 
 try{
-
 const credential=await signInWithEmailAndPassword(auth,email,pin);
-const q=query(
-collection(db,"socios"),
-where("uid","==",credential.user.uid),
-limit(1)
-);
-
+const q=query(collection(db,"socios"),where("uid","==",credential.user.uid),limit(1));
 const snap=await getDocs(q);
 
 if(snap.empty){
@@ -1075,7 +518,6 @@ throw new Error("No se encontró el socio en Firestore.");
 }
 
 const data=snap.docs[0].data();
-
 if(data.numeroSocio!==normalizedNumber){
 await signOut(auth);
 throw new Error("El número de socio no coincide.");
@@ -1085,52 +527,35 @@ firebaseUser=credential.user;
 currentMember={
 uid:credential.user.uid,
 numeroSocio:data.numeroSocio,
-nombre:data.nombre || "Socio"
+nombre:data.nombre||"Socio"
 };
 
 document.getElementById("memberLoggedOut").classList.add("hidden");
 document.getElementById("memberLoggedIn").classList.remove("hidden");
-document.getElementById("memberName").textContent=
-`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
-
+document.getElementById("memberName").textContent=`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
 document.getElementById("memberNumber").value="";
 document.getElementById("memberPin").value="";
 showLoginMessage("",false);
-
 renderAll();
 
 }catch(error){
-
 console.error(error);
 firebaseUser=null;
 currentMember=null;
 
 let message="No fue posible identificar al socio.";
-
-if(error.code==="auth/invalid-credential"){
-message="Número de socio o PIN incorrecto.";
-}else if(error.message){
-message=error.message;
-}
+if(error.code==="auth/invalid-credential")message="Número de socio o PIN incorrecto.";
+else if(error.message)message=error.message;
 
 showLoginMessage(message);
-
 }finally{
-
 button.disabled=false;
 button.textContent="Ingresar como socio";
-
 }
-
 }
 
 async function logoutMember(){
-
-try{
-await signOut(auth);
-}catch(error){
-console.error(error);
-}
+try{await signOut(auth)}catch(error){console.error(error)}
 
 firebaseUser=null;
 currentMember=null;
@@ -1140,32 +565,19 @@ selectedCourt=null;
 document.getElementById("memberLoggedOut").classList.remove("hidden");
 document.getElementById("memberLoggedIn").classList.add("hidden");
 showLoginMessage("");
-
 renderAll();
-
 }
 
 onAuthStateChanged(auth,async(userCredential)=>{
-
-firebaseReady=true;
-
 if(!userCredential){
-
 firebaseUser=null;
 currentMember=null;
 renderAll();
 return;
-
 }
 
 try{
-
-const q=query(
-collection(db,"socios"),
-where("uid","==",userCredential.uid),
-limit(1)
-);
-
+const q=query(collection(db,"socios"),where("uid","==",userCredential.uid),limit(1));
 const snap=await getDocs(q);
 
 if(snap.empty){
@@ -1174,207 +586,101 @@ return;
 }
 
 const data=snap.docs[0].data();
-
 firebaseUser=userCredential;
 currentMember={
 uid:userCredential.uid,
 numeroSocio:data.numeroSocio,
-nombre:data.nombre || "Socio"
+nombre:data.nombre||"Socio"
 };
 
 document.getElementById("memberLoggedOut").classList.add("hidden");
 document.getElementById("memberLoggedIn").classList.remove("hidden");
-document.getElementById("memberName").textContent=
-`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
-
+document.getElementById("memberName").textContent=`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
 renderAll();
 
 }catch(error){
-
 console.error(error);
 await signOut(auth);
-
 }
-
 });
 
-
 function validate(){
-
 const guestNameEl=document.getElementById("guestName");
 const guestPhoneEl=document.getElementById("guestPhone");
 const confirmBtnEl=document.getElementById("confirmBtn");
 
-const ok=
-selectedCourt
-&&
-(
-user==="socio"
-||
-(
-guestNameEl.value.trim()
-&&
-guestPhoneEl.value.trim()
-)
+const ok=selectedCourt&&(
+user==="socio"||
+(guestNameEl.value.trim()&&guestPhoneEl.value.trim())
 );
 
 confirmBtnEl.disabled=!ok;
-
 }
-
 
 function updateBottom(){
-
-const b=
-document.getElementById("bottomBtn");
-
+const b=document.getElementById("bottomBtn");
 b.disabled=!selectedCourt;
+b.classList.toggle("ready",!!selectedCourt);
+b.textContent=selectedCourt
+?"Continuar · "+selectedCourt+" · "+selectedTime
+:(selectedDate?"Selecciona una cancha":"Selecciona una fecha");
 
-b.textContent=
-selectedCourt
-?
-"Continuar · "
-+
-selectedCourt
-+
-" · "
-+
-selectedTime
-:
-(
-selectedDate
-?
-"Selecciona una cancha"
-:
-"Selecciona una fecha"
-);
-
+b.onclick=()=>{
+if(selectedCourt){
+document.getElementById("confirmCard").scrollIntoView({behavior:"smooth",block:"center"});
 }
-
+};
+}
 
 function confirmBooking(){
-
 if(document.getElementById("confirmBtn").disabled)return;
 
-document
-.querySelectorAll("main > section")
-.forEach(
-x=>x.classList.add("hidden")
-);
+document.querySelectorAll(".flow-section").forEach(x=>x.classList.add("hidden"));
+document.getElementById("success").classList.remove("hidden");
 
-document
-.getElementById("success")
-.classList
-.remove("hidden");
+document.getElementById("successText").textContent=
+selectedDate+" · "+selectedTime+" · "+selectedCourt+" · 60 minutos";
 
-document
-.getElementById("successText")
-.textContent=
-selectedDate
-+
-" · "
-+
-selectedTime
-+
-" · "
-+
-selectedCourt
-+
-" · 60 minutos";
-
-document
-.querySelector(".bottom")
-.style.display="none";
-
+document.querySelector(".bottom").style.display="none";
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
-
 function returnHome(){
-
-/* Reiniciar completamente la reserva */
-
 selectedDate="2026-09-13";
 user="socio";
 selectedTime=null;
 selectedCourt=null;
 view=new Date(2026,8,13);
 
-/* Limpiar datos del externo */
-
 document.getElementById("guestName").value="";
 document.getElementById("guestPhone").value="";
 
-/* Mostrar nuevamente todas las secciones */
+document.querySelectorAll(".flow-section").forEach(x=>x.classList.remove("hidden"));
+document.getElementById("success").classList.add("hidden");
 
-document
-.querySelectorAll("main > section")
-.forEach(function(x){
-x.classList.remove("hidden");
-});
+document.getElementById("member").classList.add("active");
+document.getElementById("guest").classList.remove("active");
 
-/* Ocultar pantalla de confirmación */
-
-document
-.getElementById("success")
-.classList
-.add("hidden");
-
-/* Restaurar Socio */
-
-document
-.getElementById("member")
-.classList
-.add("active");
-
-document
-.getElementById("guest")
-.classList
-.remove("active");
-
-/* Mostrar barra inferior */
-
-document
-.querySelector(".bottom")
-.style
-.display="block";
-
-/* Redibujar todo */
-
+document.querySelector(".bottom").style.display="block";
 renderCalendar();
 renderAll();
 
-/* Ir al verdadero inicio */
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
-
-document.getElementById("guestName").addEventListener(
-"input",
-validate
-);
-
-document.getElementById("guestPhone").addEventListener(
-"input",
-validate
-);
+document.getElementById("guestName").addEventListener("input",validate);
+document.getElementById("guestPhone").addEventListener("input",validate);
 
 renderCalendar();
 renderAll();
 
-/* Funciones usadas por los botones HTML */
-window.moveMonth = moveMonth;
-window.selectDate = selectDate;
-window.chooseUser = chooseUser;
-window.loginMember = loginMember;
-window.logoutMember = logoutMember;
-window.confirmBooking = confirmBooking;
-window.returnHome = returnHome;
+window.moveMonth=moveMonth;
+window.selectDate=selectDate;
+window.chooseUser=chooseUser;
+window.loginMember=loginMember;
+window.logoutMember=logoutMember;
+window.confirmBooking=confirmBooking;
+window.returnHome=returnHome;
 </script>
-
 </body>
 </html>
