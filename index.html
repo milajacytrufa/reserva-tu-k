@@ -5,218 +5,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#263b7a">
 <title>Reserva Tu K</title>
-
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:#f6f5fb;
-  color:#292929;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
-}
+body{margin:0;background:#f6f5fb;color:#292929;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .app{max-width:980px;margin:auto;min-height:100vh}
-header{
-  height:66px;background:#fff;border-bottom:1px solid #e2e2e8;
-  display:flex;align-items:center;padding:8px 16px;gap:10px
-}
-.logo{width:43px;height:43px}
-.brand{font-size:18px;font-weight:850;color:#263b7a;line-height:1.05}
-.sub{font-size:10px;color:#777;margin-top:2px}
-
-main{padding:14px 12px 92px}
-h1{font-size:23px;color:#263b7a;margin:0 0 12px}
-
-.card{
-  background:#fff;border:1px solid #dedfe6;border-radius:11px;
-  padding:11px;margin-bottom:10px
-}
+header{height:66px;background:#fff;border-bottom:1px solid #e2e2e8;display:flex;align-items:center;padding:8px 16px;gap:10px}
+.logo{width:43px;height:43px}.brand{font-size:18px;font-weight:850;color:#263b7a;line-height:1.05}.sub{font-size:10px;color:#777;margin-top:2px}
+main{padding:14px 12px 92px}h1{font-size:23px;color:#263b7a;margin:0 0 12px}
+.card{background:#fff;border:1px solid #dedfe6;border-radius:11px;padding:11px;margin-bottom:10px}
 .label{font-size:14px;font-weight:850;margin-bottom:9px}
-
-.top-grid{
-  display:grid;grid-template-columns:1.55fr 1fr;gap:10px;
-  align-items:stretch
-}
-.top-grid>.card{margin-bottom:0}
-
-.calendar-head{
-  display:flex;justify-content:space-between;align-items:center;margin-bottom:7px
-}
-.month{font-size:14px;font-weight:850;color:#263b7a}
-.arrow{
-  width:27px;height:25px;border:0;border-radius:6px;background:#eef0f5;
-  color:#263b7a;font-size:17px;line-height:1
-}
-.arrow:disabled{opacity:.35;cursor:not-allowed}
-.week,.calendar{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:2px
-}
-.week{
-  font-size:8px;color:#777;font-weight:800;text-align:center;margin-bottom:2px
-}
-.day{
-  height:29px;border:1px solid transparent;background:#fff;border-radius:6px;
-  font-size:10px;cursor:pointer
-}
-.day:hover:not(:disabled){border-color:#b8d96b}
-.day.selected{background:#263b7a;color:#fff;font-weight:800}
-.day:disabled{background:#f1f1f3;color:#c5c5c9;cursor:not-allowed;border-color:transparent}
+.top-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:10px;align-items:stretch}.top-grid>.card{margin-bottom:0}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}.month{font-size:14px;font-weight:850;color:#263b7a}
+.arrow{width:27px;height:25px;border:0;border-radius:6px;background:#eef0f5;color:#263b7a;font-size:17px;line-height:1}.arrow:disabled{opacity:.35;cursor:not-allowed}
+.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}.week{font-size:8px;color:#777;font-weight:800;text-align:center;margin-bottom:2px}
+.day{height:29px;border:1px solid transparent;background:#fff;border-radius:6px;font-size:10px;cursor:pointer}.day:hover:not(:disabled){border-color:#b8d96b}.day.selected{background:#263b7a;color:#fff;font-weight:800}
 .day:disabled{color:#b9b9bd;background:#f1f1f3;cursor:not-allowed;opacity:.75}
-
-.user-buttons{display:flex;gap:6px}
-.user-buttons button{
-  flex:1;border:1px solid #ddd;background:#fff;border-radius:7px;
-  padding:9px 6px;font-weight:800;color:#263b7a;font-size:11px
-}
-.user-buttons button.active{background:#263b7a;color:#fff;border-color:#263b7a}
-.note{font-size:9px;color:#777;margin-top:6px}
-
-#memberLoginCard{
-  margin:9px 0 0;padding:10px;border-radius:9px;background:#fafaff
-}
-#memberLoginCard .label{font-size:13px;margin-bottom:6px}
-#memberLoginCard label{font-size:9px}
-input{
-  width:100%;padding:8px;border:1px solid #d5d7dc;border-radius:7px;
-  font-size:14px;margin:3px 0 7px
-}
-.confirm,.home-btn{
-  width:100%;border:0;border-radius:22px;padding:10px;
-  background:#263b7a;color:#fff;font-size:13px;font-weight:850
-}
-.confirm:disabled{background:#b8d779}
-.home-btn{margin-top:7px}
-
-.flow-card{margin-top:10px}
-.times{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.time{
-  border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;
-  border-radius:7px;padding:9px 4px;font-size:12px;font-weight:850;cursor:pointer
-}
-.time.selected{
-  background:#b8e53f;border-color:#b8e53f;outline:2px solid #dfeebc
-}
-.time small{display:block;font-size:8px;margin-top:3px}
-
-.courts{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
-.court{
-  border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;
-  border-radius:7px;padding:10px 6px;font-size:12px;font-weight:850;cursor:pointer
-}
-.court.selected{
-  background:#b8e53f;border-color:#b8e53f;outline:2px solid #dfeebc
-}
-.busy{background:#eeeef1;color:#999;border-color:#e2e2e5;cursor:not-allowed}
-
-.summary div{
-  display:flex;justify-content:space-between;border-bottom:1px solid #eee;
-  padding:7px 0;font-size:12px
-}
-.summary div:last-child{border-bottom:0}
-.summary b{color:#263b7a}
-
-.success{text-align:center;padding:22px 10px}
-.check{
-  margin:auto;width:52px;height:52px;border-radius:50%;background:#b8e53f;
-  display:grid;place-items:center;font-size:27px;font-weight:900
-}
-.success h2{color:#263b7a;font-size:20px}
-.success p{color:#666;font-size:13px}
-
-.bottom{
-  position:fixed;bottom:0;left:0;right:0;background:#fff;
-  border-top:1px solid #ddd;padding:8px 12px;z-index:10
-}
-.bottom button{
-  width:100%;max-width:956px;display:block;margin:auto;border:0;border-radius:24px;
-  padding:11px;background:#b8d779;color:#fff;font-size:14px;font-weight:850
-}
-.bottom button.ready{background:#263b7a}
-
-.hidden{display:none!important}
-.no-time{font-size:12px;color:#777;padding:8px}
-
-@media(max-width:650px){
-  .app{max-width:520px}
-  .top-grid{grid-template-columns:1fr;gap:8px}
-  .top-grid>.card{margin-bottom:0}
-  .times{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:420px){
-  header{height:58px;padding:6px 12px}
-  .logo{width:37px;height:37px}
-  .brand{font-size:16px}
-  .sub{font-size:8px}
-  main{padding:11px 9px 84px}
-  h1{font-size:20px;margin-bottom:9px}
-  .card{padding:9px;margin-bottom:8px}
-  .label{font-size:13px}
-  .day{height:27px;font-size:9px}
-  .month{font-size:13px}
-  .times{grid-template-columns:repeat(2,1fr)}
-  .time{padding:8px 3px}
-}
+.user-buttons{display:flex;gap:6px}.user-buttons button{flex:1;border:1px solid #ddd;background:#fff;border-radius:7px;padding:9px 6px;font-weight:800;color:#263b7a;font-size:11px}.user-buttons button.active{background:#263b7a;color:#fff;border-color:#263b7a}
+.note{font-size:9px;color:#777;margin-top:6px}#memberLoginCard{margin:9px 0 0;padding:10px;border-radius:9px;background:#fafaff}#memberLoginCard .label{font-size:13px;margin-bottom:6px}#memberLoginCard label{font-size:9px}
+input{width:100%;padding:8px;border:1px solid #d5d7dc;border-radius:7px;font-size:14px;margin:3px 0 7px}
+.confirm,.home-btn{width:100%;border:0;border-radius:22px;padding:10px;background:#263b7a;color:#fff;font-size:13px;font-weight:850}.confirm:disabled{background:#b8d779}.home-btn{margin-top:7px}
+.flow-card{margin-top:10px}.times{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.time{border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;border-radius:7px;padding:9px 4px;font-size:12px;font-weight:850;cursor:pointer}.time.selected{background:#b8e53f;border-color:#b8e53f;outline:2px solid #dfeebc}.time small{display:block;font-size:8px;margin-top:3px}
+.courts{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.court{border:1px solid #cbe49a;background:#f0f9dc;color:#3c5d0b;border-radius:7px;padding:10px 6px;font-size:12px;font-weight:850;cursor:pointer}.court.selected{background:#b8e53f;border-color:#b8e53f;outline:2px solid #dfeebc}.busy{background:#eeeef1;color:#999;border-color:#e2e2e5;cursor:not-allowed}
+.summary div{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:7px 0;font-size:12px}.summary div:last-child{border-bottom:0}.summary b{color:#263b7a}
+.success{text-align:center;padding:22px 10px}.check{margin:auto;width:52px;height:52px;border-radius:50%;background:#b8e53f;display:grid;place-items:center;font-size:27px;font-weight:900}.success h2{color:#263b7a;font-size:20px}.success p{color:#666;font-size:13px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;padding:8px 12px;z-index:10}.bottom button{width:100%;max-width:956px;display:block;margin:auto;border:0;border-radius:24px;padding:11px;background:#b8d779;color:#fff;font-size:14px;font-weight:850}.bottom button.ready{background:#263b7a}
+.hidden{display:none!important}.no-time{font-size:12px;color:#777;padding:8px}
+@media(max-width:650px){.app{max-width:520px}.top-grid{grid-template-columns:1fr;gap:8px}.top-grid>.card{margin-bottom:0}.times{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:420px){header{height:58px;padding:6px 12px}.logo{width:37px;height:37px}.brand{font-size:16px}.sub{font-size:8px}main{padding:11px 9px 84px}h1{font-size:20px;margin-bottom:9px}.card{padding:9px;margin-bottom:8px}.label{font-size:13px}.day{height:27px;font-size:9px}.month{font-size:13px}.times{grid-template-columns:repeat(2,1fr)}.time{padding:8px 3px}}
 </style>
 </head>
-
 <body>
 <div class="app">
-
 <header>
-<img class="logo"
-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDYiIGZpbGw9IiNiOGU1M2YiLz4KPHBhdGggZD0iTTcgMzVjMTggMiAzMSAxNCAzNiAzMSA0IDEzIDMgMjMtMSAzMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOTMgNjVjLTE4LTItMzEtMTQtMzYtMzEtNC0xMy0zLTIzIDEtMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+"
-alt="Pelota de tenis">
-<div>
-<div class="brand">Reserva Tu K</div>
-<div class="sub">Reserva de cancha</div>
-</div>
+<img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDYiIGZpbGw9IiNiOGU1M2YiLz4KPHBhdGggZD0iTTcgMzVjMTggMiAzMSAxNCAzNiAzMSA0IDEzIDMgMjMtMSAzMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOTMgNjVjLTE4LTItMzEtMTQtMzYtMzEtNC0xMy0zLTIzIDEtMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+" alt="Pelota de tenis">
+<div><div class="brand">Reserva Tu K</div><div class="sub">Reserva de cancha</div></div>
 </header>
-
 <main>
 <h1>Reserva de Cancha</h1>
 
 <section class="top-grid flow-section">
-
 <section id="dateCard" class="card">
 <div class="label">1. Selecciona la fecha</div>
-<div class="calendar-head">
-<button class="arrow" onclick="moveMonth(-1)">‹</button>
-<div id="month" class="month"></div>
-<button class="arrow" onclick="moveMonth(1)">›</button>
-</div>
-<div class="week">
-<span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span>
-<span>VIE</span><span>SÁB</span><span>DOM</span>
-</div>
+<div class="calendar-head"><button class="arrow" onclick="moveMonth(-1)">‹</button><div id="month" class="month"></div><button class="arrow" onclick="moveMonth(1)">›</button></div>
+<div class="week"><span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span><span>VIE</span><span>SÁB</span><span>DOM</span></div>
 <div id="calendar" class="calendar"></div>
 </section>
 
 <section id="userPanel" class="card">
 <section id="userCard">
 <div class="label">2. ¿Quién reserva?</div>
-<div class="user-buttons">
-<button id="member" class="active" onclick="chooseUser('socio')">Socio</button>
-<button id="guest" onclick="chooseUser('externo')">Externo</button>
-</div>
+<div class="user-buttons"><button id="member" class="active" onclick="chooseUser('socio')">Socio</button><button id="guest" onclick="chooseUser('externo')">Externo</button></div>
 <div class="note">Los horarios pueden ser diferentes para socios y externos.</div>
 </section>
-
 <section id="memberLoginCard" class="card hidden">
 <div class="label">Identificación del socio</div>
-
 <div id="memberLoggedOut">
-<label>Número de socio</label>
-<input id="memberNumber" type="text" inputmode="numeric" placeholder="Ej.: 001" maxlength="6">
-
-<label>PIN personal</label>
-<input id="memberPin" type="password" inputmode="numeric" placeholder="6 dígitos" maxlength="6">
-
-<button id="memberLoginBtn" class="confirm" type="button" onclick="loginMember()">
-Ingresar como socio
-</button>
-
+<label>Número de socio</label><input id="memberNumber" type="text" inputmode="numeric" placeholder="Ej.: 001" maxlength="6">
+<label>PIN personal</label><input id="memberPin" type="password" inputmode="numeric" placeholder="6 dígitos" maxlength="6">
+<button id="memberLoginBtn" class="confirm" type="button" onclick="loginMember()">Ingresar como socio</button>
 <div id="loginMessage" class="note"></div>
 </div>
-
 <div id="memberLoggedIn" class="hidden">
 <div class="note">Socio identificado: <b id="memberName"></b></div>
 <button class="home-btn" type="button" onclick="logoutMember()">Cambiar socio</button>
@@ -225,534 +74,416 @@ Ingresar como socio
 </section>
 </section>
 
-<section id="timeCard" class="card flow-card flow-section hidden">
-<div class="label">3. Selecciona una hora</div>
-<div id="times" class="times"></div>
-</section>
-
-<section id="courtCard" class="card flow-card flow-section hidden">
-<div class="label">4. Selecciona una cancha</div>
-<div id="courts" class="courts"></div>
-</section>
-
+<section id="timeCard" class="card flow-card flow-section hidden"><div class="label">3. Selecciona una hora</div><div id="times" class="times"></div></section>
+<section id="courtCard" class="card flow-card flow-section hidden"><div class="label">4. Selecciona una cancha</div><div id="courts" class="courts"></div></section>
 <section id="confirmCard" class="card flow-card flow-section hidden">
 <div class="label">5. Confirma tu reserva</div>
-
-<div id="guestData" class="hidden">
-<label>Nombre</label>
-<input id="guestName" type="text" placeholder="Nombre y apellido">
-<label>Teléfono</label>
-<input id="guestPhone" type="tel" placeholder="Teléfono">
-</div>
-
+<div id="guestData" class="hidden"><label>Nombre</label><input id="guestName" type="text" placeholder="Nombre y apellido"><label>Teléfono</label><input id="guestPhone" type="tel" placeholder="Teléfono"></div>
 <div id="summary" class="summary"></div>
-
-<button id="confirmBtn" class="confirm" disabled onclick="confirmBooking()">
-Confirmar reserva
-</button>
+<div id="bookingMessage" class="note"></div>
+<button id="confirmBtn" class="confirm" disabled onclick="confirmBooking()">Confirmar reserva</button>
 </section>
 
 <section id="success" class="card success hidden">
-<div class="check">✓</div>
-<h2>Reserva confirmada</h2>
-<p id="successText"></p>
-<button class="home-btn" onclick="returnHome()">Volver al inicio</button>
+<div class="check">✓</div><h2>Reserva confirmada</h2><p id="successText"></p><button class="home-btn" onclick="returnHome()">Volver al inicio</button>
 </section>
-
 </main>
 
-<div class="bottom">
-<button id="bottomBtn" disabled>Selecciona una fecha</button>
-</div>
-
+<div class="bottom"><button id="bottomBtn" disabled>Selecciona una fecha</button></div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import {
-getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut
+  getAuth, signInWithEmailAndPassword, signInAnonymously,
+  onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import {
-getFirestore,collection,query,where,limit,getDocs
+  getFirestore, collection, query, where, limit, getDocs,
+  doc, runTransaction, Timestamp
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 const firebaseConfig={
-apiKey:"AIzaSyATQUnlMOsz5XwS0FAwtaHB1-IJmlmbF78",
-authDomain:"reserva-tu-k.firebaseapp.com",
-projectId:"reserva-tu-k",
-storageBucket:"reserva-tu-k.firebasestorage.app",
-messagingSenderId:"332717076435",
-appId:"1:332717076435:web:09449bf0bde428f1358926"
+  apiKey:"AIzaSyATQUnlMOsz5XwS0FAwtaHB1-IJmlmbF78",
+  authDomain:"reserva-tu-k.firebaseapp.com",
+  projectId:"reserva-tu-k",
+  storageBucket:"reserva-tu-k.firebasestorage.app",
+  messagingSenderId:"332717076435",
+  appId:"1:332717076435:web:09449bf0bde428f1358926"
 };
 
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getFirestore(app);
 
-const availability={};
-
-/*
-  Horario de prueba del MVP.
-  Se generan automáticamente para los 7 días que el calendario permite reservar.
-  Hay solamente 2 canchas.
-  Esta es disponibilidad de prueba; más adelante será reemplazada por Firestore.
-*/
-function buildDemoAvailability(){
-const result={};
-const first=firstBookableDate();
-
-const schedule=[
-"10:00","11:00","12:00",
-"15:00","16:00","17:00","18:00","19:00","20:00"
-];
-
-for(let i=0;i<7;i++){
-const d=addDays(first,i);
-const key=iso(d);
-result[key]={};
-
-schedule.forEach(t=>{
-result[key][t]=["Cancha 1","Cancha 2"];
-});
-}
-
-return result;
-}
-
 const courts=["Cancha 1","Cancha 2"];
+const allTimes=["10:00","11:00","12:00","15:00","16:00","17:00","18:00","19:00","20:00"];
+const externalTimes=["10:00","12:00","17:00","19:00"];
 
-const allTimes=[
-"09:00","10:00","11:00","12:00","13:00",
-"16:00","17:00","18:00","19:00","20:00","21:00"
-];
-
+let availability={};
 let firebaseUser=null;
 let currentMember=null;
 let selectedDate=iso(today());
 let user="socio";
 let selectedTime=null;
 let selectedCourt=null;
-let view=new Date();
-view=new Date(today().getFullYear(),today().getMonth(),1);
+let view=new Date(today().getFullYear(),today().getMonth(),1);
+let loadingAvailability=false;
+let bookingInProgress=false;
 
-function startOfDay(d){
-const x=new Date(d);
-x.setHours(0,0,0,0);
-return x;
+function startOfDay(d){const x=new Date(d);x.setHours(0,0,0,0);return x}
+function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return startOfDay(x)}
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function today(){return startOfDay(new Date())}
+function firstBookableDate(){return today()}
+function lastBookableDate(){return addDays(today(),6)}
+function isBookableDate(d){const x=startOfDay(d);return x>=firstBookableDate()&&x<=lastBookableDate()}
+
+function parseSlotDateTime(dateString,timeString){
+  const [y,m,d]=dateString.split("-").map(Number);
+  const [hh,mm]=timeString.split(":").map(Number);
+  return new Date(y,m-1,d,hh,mm,0,0);
 }
 
-function addDays(d,n){
-const x=new Date(d);
-x.setDate(x.getDate()+n);
-return startOfDay(x);
-}
-
-function iso(d){
-return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-}
-
-/*
-  Ventana de reservas:
-  - 7 días disponibles en total, contando hoy.
-  - Los días anteriores a hoy quedan bloqueados.
-  - Los días posteriores a la ventana también quedan bloqueados.
-  - El mes siguiente solo puede abrirse el último día del mes actual.
-*/
-function today(){
-return startOfDay(new Date());
-}
-
-function firstBookableDate(){
-return today();
-}
-
-Object.assign(availability,buildDemoAvailability());
-
-function lastBookableDate(){
-return addDays(today(),6);
-}
-
-function isBookableDate(d){
-const x=startOfDay(d);
-return x>=firstBookableDate() && x<=lastBookableDate();
+function isSlotOpenForToday(time){
+  const now=new Date();
+  if(selectedDate!==iso(now))return true;
+  const start=parseSlotDateTime(selectedDate,time);
+  const lockTime=new Date(start.getTime()+2*60*1000);
+  return now<lockTime;
 }
 
 function canOpenNextMonth(){
-const t=today();
-return t.getDate()===new Date(t.getFullYear(),t.getMonth()+1,0).getDate();
+  const t=today();
+  return t.getDate()===new Date(t.getFullYear(),t.getMonth()+1,0).getDate();
 }
-
 function isCurrentMonth(){
-return view.getFullYear()===today().getFullYear() &&
-view.getMonth()===today().getMonth();
+  return view.getFullYear()===today().getFullYear()&&view.getMonth()===today().getMonth();
 }
-
 function isNextAllowedMonth(){
-const t=today();
-return canOpenNextMonth() &&
-view.getFullYear()===t.getFullYear() &&
-view.getMonth()===t.getMonth()+1;
+  const t=today();
+  return canOpenNextMonth()&&view.getFullYear()===t.getFullYear()&&view.getMonth()===t.getMonth()+1;
 }
-
 function moveMonth(n){
-const t=today();
-
-if(n===1 && isCurrentMonth() && canOpenNextMonth()){
-view=new Date(t.getFullYear(),t.getMonth()+1,1);
-renderCalendar();
-return;
-}
-
-if(n===-1 && isNextAllowedMonth()){
-view=new Date(t.getFullYear(),t.getMonth(),1);
-renderCalendar();
-}
+  const t=today();
+  if(n===1&&isCurrentMonth()&&canOpenNextMonth()){
+    view=new Date(t.getFullYear(),t.getMonth()+1,1);renderCalendar();return;
+  }
+  if(n===-1&&isNextAllowedMonth()){
+    view=new Date(t.getFullYear(),t.getMonth(),1);renderCalendar();
+  }
 }
 
 function renderCalendar(){
-const t=today();
-
-if(!isCurrentMonth() && !isNextAllowedMonth()){
-view=new Date(t.getFullYear(),t.getMonth(),1);
+  const t=today();
+  if(!isCurrentMonth()&&!isNextAllowedMonth())view=new Date(t.getFullYear(),t.getMonth(),1);
+  document.getElementById("month").textContent=view.toLocaleDateString("es-CL",{month:"long",year:"numeric"}).toUpperCase();
+  const prev=document.querySelectorAll(".arrow")[0],next=document.querySelectorAll(".arrow")[1];
+  prev.disabled=true;next.disabled=!(isCurrentMonth()&&canOpenNextMonth());
+  if(isNextAllowedMonth()){prev.disabled=false;next.disabled=true}
+  const box=document.getElementById("calendar");box.innerHTML="";
+  const first=new Date(view.getFullYear(),view.getMonth(),1),start=(first.getDay()+6)%7;
+  for(let i=0;i<start;i++)box.appendChild(document.createElement("div"));
+  for(let n=1;n<=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();n++){
+    const d=new Date(view.getFullYear(),view.getMonth(),n),b=document.createElement("button"),available=isBookableDate(d);
+    b.className="day"+(iso(d)===selectedDate?" selected":"");b.textContent=n;b.disabled=!available;
+    if(available)b.onclick=()=>selectDate(iso(d));
+    box.appendChild(b);
+  }
 }
 
-document.getElementById("month").textContent=
-view.toLocaleDateString("es-CL",{month:"long",year:"numeric"}).toUpperCase();
-
-const prev=document.querySelectorAll(".arrow")[0];
-const next=document.querySelectorAll(".arrow")[1];
-
-prev.disabled=true;
-next.disabled=!(isCurrentMonth() && canOpenNextMonth());
-
-if(isNextAllowedMonth()){
-prev.disabled=false;
-next.disabled=true;
+async function selectDate(d){
+  selectedDate=d;selectedTime=null;selectedCourt=null;
+  renderCalendar();renderAll();
+  if(canReserveCurrentUser())await refreshAvailability();
 }
 
-const box=document.getElementById("calendar");
-box.innerHTML="";
+function canReserveCurrentUser(){return user==="externo"||!!currentMember}
 
-const first=new Date(view.getFullYear(),view.getMonth(),1);
-const start=(first.getDay()+6)%7;
-
-for(let i=0;i<start;i++)box.appendChild(document.createElement("div"));
-
-for(let n=1;n<=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();n++){
-const d=new Date(view.getFullYear(),view.getMonth(),n);
-const b=document.createElement("button");
-const available=isBookableDate(d);
-
-b.className="day"+(iso(d)===selectedDate?" selected":"");
-b.textContent=n;
-b.disabled=!available;
-
-if(available){
-b.onclick=()=>selectDate(iso(d));
+async function ensureAnonymousAuth(){
+  if(auth.currentUser&&auth.currentUser.isAnonymous)return auth.currentUser;
+  const credential=await signInAnonymously(auth);
+  firebaseUser=credential.user;
+  return credential.user;
 }
 
-box.appendChild(b);
-}
+async function chooseUser(u){
+  user=u;selectedTime=null;selectedCourt=null;
+  document.getElementById("member").classList.toggle("active",u==="socio");
+  document.getElementById("guest").classList.toggle("active",u==="externo");
+  document.getElementById("bookingMessage").textContent="";
+  renderAll();
+
+  if(u==="externo"){
+    try{
+      await ensureAnonymousAuth();
+      await refreshAvailability();
+    }catch(error){
+      console.error(error);
+      document.getElementById("bookingMessage").textContent="No fue posible conectar con el sistema de reservas.";
+    }
+  }else if(auth.currentUser&&auth.currentUser.isAnonymous){
+    await signOut(auth);
+    firebaseUser=null;
+    renderAll();
+  }else if(currentMember){
+    await refreshAvailability();
+  }
 }
 
-function selectDate(d){
-selectedDate=d;
-selectedTime=null;
-selectedCourt=null;
-renderCalendar();
-renderAll();
-}
+function freeCourts(t){return (availability[selectedDate]&&availability[selectedDate][t])||[]}
 
-function chooseUser(u){
-user=u;
-selectedTime=null;
-selectedCourt=null;
-document.getElementById("member").classList.toggle("active",u==="socio");
-document.getElementById("guest").classList.toggle("active",u==="externo");
-renderAll();
-}
-
-function freeCourts(t){
-return (availability[selectedDate]&&availability[selectedDate][t])||[];
+async function refreshAvailability(){
+  if(!canReserveCurrentUser()||!auth.currentUser)return;
+  loadingAvailability=true;
+  renderTimes();
+  try{
+    const dayStart=parseSlotDateTime(selectedDate,"00:00");
+    const nextDay=addDays(dayStart,1);
+    const q=query(
+      collection(db,"reservas"),
+      where("startAt",">=",Timestamp.fromDate(dayStart)),
+      where("startAt","<",Timestamp.fromDate(nextDay))
+    );
+    const snap=await getDocs(q);
+    const occupied={};
+    snap.forEach(item=>{
+      const data=item.data();
+      if(data.startAt&&data.cancha){
+        const dt=data.startAt.toDate();
+        const key=String(dt.getHours()).padStart(2,"0")+":"+String(dt.getMinutes()).padStart(2,"0");
+        if(!occupied[key])occupied[key]=[];
+        if(courts.includes(data.cancha)&&!occupied[key].includes(data.cancha))occupied[key].push(data.cancha);
+      }
+    });
+    const nextAvailability={};
+    allTimes.forEach(t=>{
+      if(isSlotOpenForToday(t)){
+        nextAvailability[t]=courts.filter(c=>!(occupied[t]||[]).includes(c));
+      }else{
+        nextAvailability[t]=[];
+      }
+    });
+    availability[selectedDate]=nextAvailability;
+  }catch(error){
+    console.error(error);
+    availability[selectedDate]={};
+    document.getElementById("bookingMessage").textContent="No fue posible consultar las reservas.";
+  }finally{
+    loadingAvailability=false;
+    renderAll();
+  }
 }
 
 function renderTimes(){
-const box=document.getElementById("times");
-box.innerHTML="";
-if(user==="socio"&&!currentMember)return;
-
-const arr=allTimes.filter(t=>freeCourts(t).length&&(
-user==="socio"||["10:00","12:00","17:00","19:00"].includes(t)
-));
-
-if(!arr.length){
-box.innerHTML='<div class="no-time">No hay horas disponibles.</div>';
-return;
-}
-
-arr.forEach(t=>{
-const b=document.createElement("button");
-b.className="time"+(t===selectedTime?" selected":"");
-b.innerHTML=t+"<small>"+freeCourts(t).length+" canchas disponibles</small>";
-b.onclick=()=>{
-selectedTime=t;
-selectedCourt=null;
-renderTimes();
-renderCourts();
-renderConfirm();
-updateBottom();
-};
-box.appendChild(b);
-});
+  const box=document.getElementById("times");box.innerHTML="";
+  if(user==="socio"&&!currentMember)return;
+  if(loadingAvailability){box.innerHTML='<div class="no-time">Consultando disponibilidad...</div>';return}
+  const arr=allTimes.filter(t=>freeCourts(t).length&&(
+    user==="socio"||externalTimes.includes(t)
+  ));
+  if(!arr.length){box.innerHTML='<div class="no-time">No hay horas disponibles.</div>';return}
+  arr.forEach(t=>{
+    const b=document.createElement("button");
+    b.className="time"+(t===selectedTime?" selected":"");
+    b.innerHTML=t+"<small>"+freeCourts(t).length+" canchas disponibles</small>";
+    b.onclick=async()=>{
+      if(!isSlotOpenForToday(t)){await refreshAvailability();return}
+      selectedTime=t;selectedCourt=null;renderTimes();renderCourts();renderConfirm();updateBottom();
+    };
+    box.appendChild(b);
+  });
 }
 
 function renderCourts(){
-const box=document.getElementById("courts");
-box.innerHTML="";
-if(!selectedTime)return;
-
-courts.forEach(c=>{
-const b=document.createElement("button");
-const free=freeCourts(selectedTime).includes(c);
-b.className="court "+(free?"":"busy")+(c===selectedCourt?" selected":"");
-b.textContent=c+" · "+(free?"DISPONIBLE":"OCUPADA");
-b.disabled=!free;
-
-if(free){
-b.onclick=()=>{
-selectedCourt=c;
-renderCourts();
-renderConfirm();
-updateBottom();
-};
-}
-box.appendChild(b);
-});
+  const box=document.getElementById("courts");box.innerHTML="";
+  if(!selectedTime)return;
+  courts.forEach(c=>{
+    const b=document.createElement("button"),free=freeCourts(selectedTime).includes(c);
+    b.className="court "+(free?"":"busy")+(c===selectedCourt?" selected":"");
+    b.textContent=c+" · "+(free?"DISPONIBLE":"OCUPADA");b.disabled=!free;
+    if(free)b.onclick=()=>{selectedCourt=c;renderCourts();renderConfirm();updateBottom()};
+    box.appendChild(b);
+  });
 }
 
 function renderConfirm(){
-const card=document.getElementById("confirmCard");
-card.classList.toggle("hidden",!selectedCourt);
-if(!selectedCourt)return;
-
-document.getElementById("guestData").classList.toggle("hidden",user!=="externo");
-
-document.getElementById("summary").innerHTML=
-"<div><span>Fecha</span><b>"+selectedDate+"</b></div>"+
-"<div><span>Hora</span><b>"+selectedTime+"</b></div>"+
-"<div><span>Cancha</span><b>"+selectedCourt+"</b></div>"+
-"<div><span>Duración</span><b>60 minutos</b></div>"+
-"<div><span>Usuario</span><b>"+(user==="socio"?"Socio":"Externo")+"</b></div>";
-
-validate();
+  const card=document.getElementById("confirmCard");card.classList.toggle("hidden",!selectedCourt);
+  if(!selectedCourt)return;
+  document.getElementById("guestData").classList.toggle("hidden",user!=="externo");
+  document.getElementById("summary").innerHTML=
+    "<div><span>Fecha</span><b>"+selectedDate+"</b></div>"+
+    "<div><span>Hora</span><b>"+selectedTime+"</b></div>"+
+    "<div><span>Cancha</span><b>"+selectedCourt+"</b></div>"+
+    "<div><span>Duración</span><b>60 minutos</b></div>"+
+    "<div><span>Usuario</span><b>"+(user==="socio"?"Socio":"Externo")+"</b></div>";
+  validate();
 }
 
 function renderAll(){
-document.getElementById("memberLoginCard").classList.toggle("hidden",user!=="socio");
-const canReserve=user==="externo"||!!currentMember;
-
-document.getElementById("timeCard").classList.toggle("hidden",!canReserve);
-document.getElementById("courtCard").classList.toggle("hidden",!canReserve);
-
-renderTimes();
-renderCourts();
-renderConfirm();
-updateBottom();
+  document.getElementById("memberLoginCard").classList.toggle("hidden",user!=="socio");
+  const canReserve=canReserveCurrentUser();
+  document.getElementById("timeCard").classList.toggle("hidden",!canReserve);
+  document.getElementById("courtCard").classList.toggle("hidden",!canReserve);
+  renderTimes();renderCourts();renderConfirm();updateBottom();
 }
 
 function showLoginMessage(message,isError=true){
-const el=document.getElementById("loginMessage");
-el.textContent=message;
-el.style.color=isError?"#b42318":"#3c5d0b";
+  const el=document.getElementById("loginMessage");el.textContent=message;el.style.color=isError?"#b42318":"#3c5d0b";
 }
 
 async function loginMember(){
-const number=document.getElementById("memberNumber").value.trim();
-const pin=document.getElementById("memberPin").value.trim();
-const button=document.getElementById("memberLoginBtn");
-
-if(!/^\d{1,6}$/.test(number)){
-showLoginMessage("Ingresa un número de socio válido.");
-return;
-}
-if(!/^\d{6}$/.test(pin)){
-showLoginMessage("El PIN debe tener 6 dígitos.");
-return;
-}
-
-const normalizedNumber=number.padStart(3,"0");
-const email=`socio${normalizedNumber}@reservatuk.app`;
-
-button.disabled=true;
-button.textContent="Verificando...";
-showLoginMessage("Verificando socio...",false);
-
-try{
-const credential=await signInWithEmailAndPassword(auth,email,pin);
-const q=query(collection(db,"socios"),where("uid","==",credential.user.uid),limit(1));
-const snap=await getDocs(q);
-
-if(snap.empty){
-await signOut(auth);
-throw new Error("No se encontró el socio en Firestore.");
-}
-
-const data=snap.docs[0].data();
-if(data.numeroSocio!==normalizedNumber){
-await signOut(auth);
-throw new Error("El número de socio no coincide.");
-}
-
-firebaseUser=credential.user;
-currentMember={
-uid:credential.user.uid,
-numeroSocio:data.numeroSocio,
-nombre:data.nombre||"Socio"
-};
-
-document.getElementById("memberLoggedOut").classList.add("hidden");
-document.getElementById("memberLoggedIn").classList.remove("hidden");
-document.getElementById("memberName").textContent=`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
-document.getElementById("memberNumber").value="";
-document.getElementById("memberPin").value="";
-showLoginMessage("",false);
-renderAll();
-
-}catch(error){
-console.error(error);
-firebaseUser=null;
-currentMember=null;
-
-let message="No fue posible identificar al socio.";
-if(error.code==="auth/invalid-credential")message="Número de socio o PIN incorrecto.";
-else if(error.message)message=error.message;
-
-showLoginMessage(message);
-}finally{
-button.disabled=false;
-button.textContent="Ingresar como socio";
-}
+  const number=document.getElementById("memberNumber").value.trim();
+  const pin=document.getElementById("memberPin").value.trim();
+  const button=document.getElementById("memberLoginBtn");
+  if(!/^\d{1,6}$/.test(number)){showLoginMessage("Ingresa un número de socio válido.");return}
+  if(!/^\d{6}$/.test(pin)){showLoginMessage("El PIN debe tener 6 dígitos.");return}
+  const normalizedNumber=number.padStart(3,"0"),email=`socio${normalizedNumber}@reservatuk.app`;
+  button.disabled=true;button.textContent="Verificando...";showLoginMessage("Verificando socio...",false);
+  try{
+    const credential=await signInWithEmailAndPassword(auth,email,pin);
+    const q=query(collection(db,"socios"),where("uid","==",credential.user.uid),limit(1));
+    const snap=await getDocs(q);
+    if(snap.empty){await signOut(auth);throw new Error("No se encontró el socio en Firestore.")}
+    const data=snap.docs[0].data();
+    if(data.numeroSocio!==normalizedNumber){await signOut(auth);throw new Error("El número de socio no coincide.")}
+    firebaseUser=credential.user;
+    currentMember={uid:credential.user.uid,numeroSocio:data.numeroSocio,nombre:data.nombre||"Socio"};
+    document.getElementById("memberLoggedOut").classList.add("hidden");
+    document.getElementById("memberLoggedIn").classList.remove("hidden");
+    document.getElementById("memberName").textContent=`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
+    document.getElementById("memberNumber").value="";document.getElementById("memberPin").value="";
+    showLoginMessage("",false);renderAll();await refreshAvailability();
+  }catch(error){
+    console.error(error);firebaseUser=null;currentMember=null;
+    let message="No fue posible identificar al socio.";
+    if(error.code==="auth/invalid-credential")message="Número de socio o PIN incorrecto.";
+    else if(error.message)message=error.message;
+    showLoginMessage(message);
+  }finally{button.disabled=false;button.textContent="Ingresar como socio"}
 }
 
 async function logoutMember(){
-try{await signOut(auth)}catch(error){console.error(error)}
-
-firebaseUser=null;
-currentMember=null;
-selectedTime=null;
-selectedCourt=null;
-
-document.getElementById("memberLoggedOut").classList.remove("hidden");
-document.getElementById("memberLoggedIn").classList.add("hidden");
-showLoginMessage("");
-renderAll();
+  try{await signOut(auth)}catch(error){console.error(error)}
+  firebaseUser=null;currentMember=null;selectedTime=null;selectedCourt=null;
+  document.getElementById("memberLoggedOut").classList.remove("hidden");
+  document.getElementById("memberLoggedIn").classList.add("hidden");
+  showLoginMessage("");renderAll();
 }
 
 onAuthStateChanged(auth,async(userCredential)=>{
-if(!userCredential){
-firebaseUser=null;
-currentMember=null;
-renderAll();
-return;
-}
-
-try{
-const q=query(collection(db,"socios"),where("uid","==",userCredential.uid),limit(1));
-const snap=await getDocs(q);
-
-if(snap.empty){
-await signOut(auth);
-return;
-}
-
-const data=snap.docs[0].data();
-firebaseUser=userCredential;
-currentMember={
-uid:userCredential.uid,
-numeroSocio:data.numeroSocio,
-nombre:data.nombre||"Socio"
-};
-
-document.getElementById("memberLoggedOut").classList.add("hidden");
-document.getElementById("memberLoggedIn").classList.remove("hidden");
-document.getElementById("memberName").textContent=`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
-renderAll();
-
-}catch(error){
-console.error(error);
-await signOut(auth);
-}
+  if(!userCredential){firebaseUser=null;currentMember=null;renderAll();return}
+  if(userCredential.isAnonymous){
+    firebaseUser=userCredential;
+    if(user==="externo"){renderAll();await refreshAvailability()}
+    return;
+  }
+  try{
+    const q=query(collection(db,"socios"),where("uid","==",userCredential.uid),limit(1));
+    const snap=await getDocs(q);
+    if(snap.empty){await signOut(auth);return}
+    const data=snap.docs[0].data();
+    firebaseUser=userCredential;
+    currentMember={uid:userCredential.uid,numeroSocio:data.numeroSocio,nombre:data.nombre||"Socio"};
+    document.getElementById("memberLoggedOut").classList.add("hidden");
+    document.getElementById("memberLoggedIn").classList.remove("hidden");
+    document.getElementById("memberName").textContent=`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
+    renderAll();await refreshAvailability();
+  }catch(error){console.error(error);await signOut(auth)}
 });
 
 function validate(){
-const guestNameEl=document.getElementById("guestName");
-const guestPhoneEl=document.getElementById("guestPhone");
-const confirmBtnEl=document.getElementById("confirmBtn");
-
-const ok=selectedCourt&&(
-user==="socio"||
-(guestNameEl.value.trim()&&guestPhoneEl.value.trim())
-);
-
-confirmBtnEl.disabled=!ok;
+  const guestNameEl=document.getElementById("guestName"),guestPhoneEl=document.getElementById("guestPhone"),confirmBtnEl=document.getElementById("confirmBtn");
+  const ok=selectedCourt&&!bookingInProgress&&(
+    user==="socio"||(guestNameEl.value.trim()&&guestPhoneEl.value.trim())
+  );
+  confirmBtnEl.disabled=!ok;
 }
 
 function updateBottom(){
-const b=document.getElementById("bottomBtn");
-b.disabled=!selectedCourt;
-b.classList.toggle("ready",!!selectedCourt);
-b.textContent=selectedCourt
-?"Continuar · "+selectedCourt+" · "+selectedTime
-:(selectedDate?"Selecciona una cancha":"Selecciona una fecha");
-
-b.onclick=()=>{
-if(selectedCourt){
-document.getElementById("confirmCard").scrollIntoView({behavior:"smooth",block:"center"});
-}
-};
+  const b=document.getElementById("bottomBtn");
+  b.disabled=!selectedCourt;b.classList.toggle("ready",!!selectedCourt);
+  b.textContent=selectedCourt?"Continuar · "+selectedCourt+" · "+selectedTime:(selectedDate?"Selecciona una cancha":"Selecciona una fecha");
+  b.onclick=()=>{if(selectedCourt)document.getElementById("confirmCard").scrollIntoView({behavior:"smooth",block:"center"})};
 }
 
-function confirmBooking(){
-if(document.getElementById("confirmBtn").disabled)return;
+function reservationId(){
+  return `${selectedDate}_${selectedTime.replace(":","-")}_${selectedCourt.replace(" ","-")}`;
+}
 
-document.querySelectorAll(".flow-section").forEach(x=>x.classList.add("hidden"));
-document.getElementById("success").classList.remove("hidden");
+async function confirmBooking(){
+  if(document.getElementById("confirmBtn").disabled)return;
+  if(!firebaseUser){document.getElementById("bookingMessage").textContent="Debes estar conectado para reservar.";return}
+  if(!selectedDate||!selectedTime||!selectedCourt)return;
+  if(!isBookableDate(parseDate(selectedDate))){document.getElementById("bookingMessage").textContent="La fecha ya no está disponible.";return}
+  if(!isSlotOpenForToday(selectedTime)){document.getElementById("bookingMessage").textContent="La hora seleccionada ya no está disponible.";await refreshAvailability();return}
 
-document.getElementById("successText").textContent=
-selectedDate+" · "+selectedTime+" · "+selectedCourt+" · 60 minutos";
+  bookingInProgress=true;validate();
+  const btn=document.getElementById("confirmBtn");btn.textContent="Confirmando...";
+  const bookingMessage=document.getElementById("bookingMessage");bookingMessage.textContent="";
 
-document.querySelector(".bottom").style.display="none";
-window.scrollTo({top:0,behavior:"smooth"});
+  try{
+    const startAt=Timestamp.fromDate(parseSlotDateTime(selectedDate,selectedTime));
+    const ref=doc(db,"reservas",reservationId());
+
+    await runTransaction(db,async(transaction)=>{
+      const existing=await transaction.get(ref);
+      if(existing.exists())throw new Error("SLOT_ALREADY_RESERVED");
+      transaction.set(ref,{
+        startAt,
+        cancha:selectedCourt,
+        createdAt:Timestamp.now()
+      });
+    });
+
+    availability[selectedDate][selectedTime]=freeCourts(selectedTime).filter(c=>c!==selectedCourt);
+    document.querySelectorAll(".flow-section").forEach(x=>x.classList.add("hidden"));
+    document.getElementById("success").classList.remove("hidden");
+    document.getElementById("successText").textContent=`${selectedDate} · ${selectedTime} · ${selectedCourt} · 60 minutos`;
+    document.querySelector(".bottom").style.display="none";
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(error){
+    console.error(error);
+    if(error.message==="SLOT_ALREADY_RESERVED"){
+      bookingMessage.textContent="La cancha acaba de ser reservada por otro usuario.";
+      selectedCourt=null;await refreshAvailability();renderConfirm();updateBottom();
+    }else if(error.code==="permission-denied"){
+      bookingMessage.textContent="Firestore rechazó la reserva. Revisa la fecha y hora seleccionadas.";
+    }else{
+      bookingMessage.textContent="No fue posible confirmar la reserva. Inténtalo nuevamente.";
+    }
+  }finally{
+    bookingInProgress=false;btn.textContent="Confirmar reserva";validate();
+  }
+}
+
+function parseDate(s){
+  const [y,m,d]=s.split("-").map(Number);
+  return new Date(y,m-1,d);
 }
 
 function returnHome(){
-selectedDate=iso(today());
-user="socio";
-selectedTime=null;
-selectedCourt=null;
-view=new Date(today().getFullYear(),today().getMonth(),1);
-
-document.getElementById("guestName").value="";
-document.getElementById("guestPhone").value="";
-
-document.querySelectorAll(".flow-section").forEach(x=>x.classList.remove("hidden"));
-document.getElementById("success").classList.add("hidden");
-
-document.getElementById("member").classList.add("active");
-document.getElementById("guest").classList.remove("active");
-
-document.querySelector(".bottom").style.display="block";
-renderCalendar();
-renderAll();
-
-window.scrollTo({top:0,behavior:"smooth"});
+  selectedDate=iso(today());user="socio";selectedTime=null;selectedCourt=null;
+  view=new Date(today().getFullYear(),today().getMonth(),1);
+  document.getElementById("guestName").value="";document.getElementById("guestPhone").value="";
+  document.getElementById("bookingMessage").textContent="";
+  document.querySelectorAll(".flow-section").forEach(x=>x.classList.remove("hidden"));
+  document.getElementById("success").classList.add("hidden");
+  document.getElementById("member").classList.add("active");document.getElementById("guest").classList.remove("active");
+  document.querySelector(".bottom").style.display="block";renderCalendar();renderAll();
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 document.getElementById("guestName").addEventListener("input",validate);
 document.getElementById("guestPhone").addEventListener("input",validate);
 
-renderCalendar();
-renderAll();
+renderCalendar();renderAll();
+
+setInterval(async()=>{
+  if(document.visibilityState==="hidden")return;
+  if(canReserveCurrentUser()&&selectedDate===iso(today()))await refreshAvailability();
+  renderCalendar();
+},15000);
 
 window.moveMonth=moveMonth;
 window.selectDate=selectDate;
