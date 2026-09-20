@@ -574,9 +574,6 @@ window.query = query;
 window.where = where;
 window.limit = limit;
 window.getDocs = getDocs;
-</script>
-
-<script>
 
 let firebaseUser=null;
 let currentMember=null;
@@ -1206,6 +1203,10 @@ await signOut(auth);
 
 function validate(){
 
+const guestNameEl=document.getElementById("guestName");
+const guestPhoneEl=document.getElementById("guestPhone");
+const confirmBtnEl=document.getElementById("confirmBtn");
+
 const ok=
 selectedCourt
 &&
@@ -1213,13 +1214,13 @@ selectedCourt
 user==="socio"
 ||
 (
-guestName.value.trim()
+guestNameEl.value.trim()
 &&
-guestPhone.value.trim()
+guestPhoneEl.value.trim()
 )
 );
 
-confirmBtn.disabled=!ok;
+confirmBtnEl.disabled=!ok;
 
 }
 
@@ -1255,7 +1256,7 @@ selectedDate
 
 function confirmBooking(){
 
-if(confirmBtn.disabled)return;
+if(document.getElementById("confirmBtn").disabled)return;
 
 document
 .querySelectorAll("main > section")
@@ -1354,12 +1355,12 @@ behavior:"smooth"
 }
 
 
-guestName.addEventListener(
+document.getElementById("guestName").addEventListener(
 "input",
 validate
 );
 
-guestPhone.addEventListener(
+document.getElementById("guestPhone").addEventListener(
 "input",
 validate
 );
@@ -1367,6 +1368,14 @@ validate
 renderCalendar();
 renderAll();
 
+/* Funciones usadas por los botones HTML */
+window.moveMonth = moveMonth;
+window.selectDate = selectDate;
+window.chooseUser = chooseUser;
+window.loginMember = loginMember;
+window.logoutMember = logoutMember;
+window.confirmBooking = confirmBooking;
+window.returnHome = returnHome;
 </script>
 
 </body>
