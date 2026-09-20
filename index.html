@@ -408,6 +408,41 @@ Los horarios pueden ser diferentes para socios y externos.
 </section>
 
 
+<section id="memberLoginCard" class="card hidden">
+
+<div class="label">Identificación del socio</div>
+
+<div id="memberLoggedOut">
+
+<label>Número de socio</label>
+<input id="memberNumber" type="text" inputmode="numeric" placeholder="Ej.: 001" maxlength="6">
+
+<label>PIN personal</label>
+<input id="memberPin" type="password" inputmode="numeric" placeholder="6 dígitos" maxlength="6">
+
+<button id="memberLoginBtn" class="confirm" type="button" onclick="loginMember()">
+Ingresar como socio
+</button>
+
+<div id="loginMessage" class="note"></div>
+
+</div>
+
+<div id="memberLoggedIn" class="hidden">
+
+<div class="note">
+Socio identificado: <b id="memberName"></b>
+</div>
+
+<button class="home-btn" type="button" onclick="logoutMember()">
+Cambiar socio
+</button>
+
+</div>
+
+</section>
+
+
 <section id="timeCard" class="card hidden">
 
 <div class="label">3. Selecciona una hora</div>
@@ -499,7 +534,53 @@ Selecciona una fecha
 </div>
 
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  limit,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyATQUnlMOsz5XwS0FAwtaHB1-IJmlmbF78",
+  authDomain: "reserva-tu-k.firebaseapp.com",
+  projectId: "reserva-tu-k",
+  storageBucket: "reserva-tu-k.firebasestorage.app",
+  messagingSenderId: "332717076435",
+  appId: "1:332717076435:web:09449bf0bde428f1358926"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+window.auth = auth;
+window.db = db;
+window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+window.onAuthStateChanged = onAuthStateChanged;
+window.signOut = signOut;
+window.collection = collection;
+window.query = query;
+window.where = where;
+window.limit = limit;
+window.getDocs = getDocs;
+</script>
+
 <script>
+
+let firebaseUser=null;
+let currentMember=null;
+let firebaseReady=false;
 
 const availability={
 
@@ -731,6 +812,8 @@ document.getElementById("times");
 
 box.innerHTML="";
 
+if(user==="socio" && !currentMember)return;
+
 const arr=
 allTimes.filter(
 t=>
@@ -925,15 +1008,20 @@ document
 .classList
 .remove("hidden");
 
+const memberLoginCard=document.getElementById("memberLoginCard");
+memberLoginCard.classList.toggle("hidden",user!=="socio");
+
+const canReserve=user==="externo" || !!currentMember;
+
 document
 .getElementById("timeCard")
 .classList
-.remove("hidden");
+.toggle("hidden",!canReserve);
 
 document
 .getElementById("courtCard")
 .classList
-.remove("hidden");
+.toggle("hidden",!canReserve);
 
 renderTimes();
 renderCourts();
@@ -941,6 +1029,179 @@ renderConfirm();
 updateBottom();
 
 }
+
+
+
+function showLoginMessage(message,isError=true){
+
+const el=document.getElementById("loginMessage");
+el.textContent=message;
+el.style.color=isError?"#b42318":"#3c5d0b";
+
+}
+
+async function loginMember(){
+
+const number=document.getElementById("memberNumber").value.trim();
+const pin=document.getElementById("memberPin").value.trim();
+const button=document.getElementById("memberLoginBtn");
+
+if(!/^\d{1,6}$/.test(number)){
+showLoginMessage("Ingresa un número de socio válido.");
+return;
+}
+
+if(!/^\d{6}$/.test(pin)){
+showLoginMessage("El PIN debe tener 6 dígitos.");
+return;
+}
+
+const normalizedNumber=number.padStart(3,"0");
+const email=`socio${normalizedNumber}@reservatuk.app`;
+
+button.disabled=true;
+button.textContent="Verificando...";
+showLoginMessage("Verificando socio...",false);
+
+try{
+
+const credential=await signInWithEmailAndPassword(auth,email,pin);
+const q=query(
+collection(db,"socios"),
+where("uid","==",credential.user.uid),
+limit(1)
+);
+
+const snap=await getDocs(q);
+
+if(snap.empty){
+await signOut(auth);
+throw new Error("No se encontró el socio en Firestore.");
+}
+
+const data=snap.docs[0].data();
+
+if(data.numeroSocio!==normalizedNumber){
+await signOut(auth);
+throw new Error("El número de socio no coincide.");
+}
+
+firebaseUser=credential.user;
+currentMember={
+uid:credential.user.uid,
+numeroSocio:data.numeroSocio,
+nombre:data.nombre || "Socio"
+};
+
+document.getElementById("memberLoggedOut").classList.add("hidden");
+document.getElementById("memberLoggedIn").classList.remove("hidden");
+document.getElementById("memberName").textContent=
+`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
+
+document.getElementById("memberNumber").value="";
+document.getElementById("memberPin").value="";
+showLoginMessage("",false);
+
+renderAll();
+
+}catch(error){
+
+console.error(error);
+firebaseUser=null;
+currentMember=null;
+
+let message="No fue posible identificar al socio.";
+
+if(error.code==="auth/invalid-credential"){
+message="Número de socio o PIN incorrecto.";
+}else if(error.message){
+message=error.message;
+}
+
+showLoginMessage(message);
+
+}finally{
+
+button.disabled=false;
+button.textContent="Ingresar como socio";
+
+}
+
+}
+
+async function logoutMember(){
+
+try{
+await signOut(auth);
+}catch(error){
+console.error(error);
+}
+
+firebaseUser=null;
+currentMember=null;
+selectedTime=null;
+selectedCourt=null;
+
+document.getElementById("memberLoggedOut").classList.remove("hidden");
+document.getElementById("memberLoggedIn").classList.add("hidden");
+showLoginMessage("");
+
+renderAll();
+
+}
+
+onAuthStateChanged(auth,async(userCredential)=>{
+
+firebaseReady=true;
+
+if(!userCredential){
+
+firebaseUser=null;
+currentMember=null;
+renderAll();
+return;
+
+}
+
+try{
+
+const q=query(
+collection(db,"socios"),
+where("uid","==",userCredential.uid),
+limit(1)
+);
+
+const snap=await getDocs(q);
+
+if(snap.empty){
+await signOut(auth);
+return;
+}
+
+const data=snap.docs[0].data();
+
+firebaseUser=userCredential;
+currentMember={
+uid:userCredential.uid,
+numeroSocio:data.numeroSocio,
+nombre:data.nombre || "Socio"
+};
+
+document.getElementById("memberLoggedOut").classList.add("hidden");
+document.getElementById("memberLoggedIn").classList.remove("hidden");
+document.getElementById("memberName").textContent=
+`${currentMember.nombre} · N.º ${currentMember.numeroSocio}`;
+
+renderAll();
+
+}catch(error){
+
+console.error(error);
+await signOut(auth);
+
+}
+
+});
 
 
 function validate(){
